@@ -1,0 +1,26 @@
+.validation-failure {
+  display: none; }
+
+.swal-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  outline: none; }
+
+.swal-modal {
+  background-color: #373b3d;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6); }
+
+.swal-title, .swal-text {
+  color: #c1dfeb; }
+
+.swal-button--confirm {
+  background-color: #a8a8a0;
+  color: #1b1c1d; }
+
+.swal-button--cancel {
+  background-color: #1b1c1d;
+  color: #bbc2c2; }
+
+.react-json-view {
+  background-color: #282a2c !important; }
+
+/*# sourceMappingURL=cssOverwrite.css.map */

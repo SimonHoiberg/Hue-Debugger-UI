@@ -1,0 +1,100 @@
+<html lang="en">
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+  </head>
+
+
+<style>
+  .splash-wrapper {
+    width: 450px;
+    height: 450px;
+    background: url(../media/bridge_v2.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .splash-center {
+    width: 120px;
+    height: 120px;
+    background-color: #389de0;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 5;
+  }
+
+  .splash-title {
+    width: 100%;
+    height: 50px;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 38px;
+    color: white;
+    position: relative;
+    text-align: center;
+    margin-top: 350px;
+  }
+
+  /* Loader 6 */
+  .loader-6 {
+    height: 75px;
+    width: 75px;
+    position: absolute;
+    z-index: 10;
+    margin-top: -15px;
+    margin-left: -15px;
+  }
+  .loader-6 span {
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    bottom: 0; right: 0;
+    height: 75px;
+    width: 75px;
+  }
+  .loader-6 span::before,
+  .loader-6 span::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    bottom: 0; right: 0;
+    height: 75px;
+    width: 75px;
+    border: 15px solid white;
+    border-radius: 50%;
+    opacity: 0;
+    -webkit-animation: loader-6-1 1.5s cubic-bezier(0.075, 0.820, 0.165, 1.000) infinite;
+            animation: loader-6-1 1.5s cubic-bezier(0.075, 0.820, 0.165, 1.000) infinite;
+  }
+  @-webkit-keyframes loader-6-1 {
+    0%   { -webkit-transform: translate3d(0, 0, 0) scale(0); opacity: 1; }
+    100% { -webkit-transform: translate3d(0, 0, 0) scale(1.5); opacity: 0; }
+  }
+  @keyframes loader-6-1 {
+    0%   { transform: translate3d(0, 0, 0) scale(0); opacity: 1; }
+    100% { transform: translate3d(0, 0, 0) scale(1.5); opacity: 0; }
+  }
+  .loader-6 span::after {
+    -webkit-animation: loader-6-2 1.5s cubic-bezier(0.075, 0.820, 0.165, 1.000) .25s infinite;
+            animation: loader-6-2 1.5s cubic-bezier(0.075, 0.820, 0.165, 1.000) .25s infinite;
+  }
+  @-webkit-keyframes loader-6-2 {
+    0%   { -webkit-transform: translate3d(0, 0, 0) scale(0); opacity: 1; }
+    100% { -webkit-transform: translate3d(0, 0, 0) scale(1); opacity: 0; }
+  }
+  @keyframes loader-6-2 {
+    0%   { transform: translate3d(0, 0, 0) scale(0); opacity: 1; }
+    100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0; }
+  }
+</style>
+
+<div class="splash-wrapper">
+  <div class="splash-title">Hue Debugger UI</div>
+  <div class="loader-6"><span></span></div>
+  <div class="splash-center"></div>
+</div>
+
+</html>

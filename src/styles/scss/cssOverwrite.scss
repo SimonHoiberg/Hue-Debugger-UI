@@ -1,0 +1,33 @@
+@import '../main';
+
+.validation-failure {
+  display: none;
+}
+
+.swal-overlay {
+  background-color: rgba(0,0,0,0.6);
+  outline: none;
+}
+
+.swal-modal {
+  background-color: $base1;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.6);;
+}
+
+.swal-title, .swal-text {
+  color: $shade7;
+}
+
+.swal-button--confirm {
+  background-color: $shade2;
+  color: $base3;
+}
+
+.swal-button--cancel {
+  background-color: $base3;
+  color: $base2;
+}
+
+.react-json-view {
+  background-color: $jsonBackground !important;
+}

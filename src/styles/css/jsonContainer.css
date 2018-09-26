@@ -1,0 +1,87 @@
+.contentContainer {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 95%;
+  height: 85%;
+  display: flex;
+  margin: 2.5%; }
+
+.emptyContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.emptyText {
+  color: #373b3d;
+  font-size: 28px;
+  width: 300px;
+  text-align: center; }
+
+.menuContainer {
+  overflow-y: auto;
+  width: 25%;
+  margin-right: 2.5%; }
+
+.itemContainer {
+  width: 100%; }
+
+.deleteButton {
+  height: 35px;
+  line-height: 35px;
+  font-size: 35px;
+  text-align: center;
+  color: #D7443F;
+  cursor: pointer;
+  float: left;
+  transition: 0.3s;
+  overflow: hidden; }
+
+.emptyButton {
+  width: 35px;
+  height: 35px;
+  float: left; }
+
+.jsonDataContainer {
+  overflow-y: auto;
+  height: 100%; }
+
+.deleteButton {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 35px;
+  text-align: center;
+  color: #D7443F;
+  cursor: pointer;
+  float: left; }
+
+.emptyButton {
+  width: 35px;
+  height: 35px;
+  float: left; }
+
+.menuItem {
+  height: 35px;
+  line-height: 35px;
+  color: #bbc2c2;
+  padding-left: 20px;
+  background-color: #282a2c;
+  overflow: hidden;
+  cursor: pointer;
+  border-left: borderLeft;
+  transition: 0.3s; }
+  .menuItem:hover {
+    background-color: #778283;
+    color: #bbc2c2; }
+
+.menuItemActive {
+  color: white;
+  border-left: 8px solid #e58b16; }
+
+/*# sourceMappingURL=jsonContainer.css.map */

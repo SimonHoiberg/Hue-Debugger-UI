@@ -1,0 +1,13 @@
+@import '../main';
+.mainContainer {
+  @include no-select;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.mobileView {
+  text-align: center;
+  color: $base2;
+  padding: 30px;
+}
