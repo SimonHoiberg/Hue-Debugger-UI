@@ -23,4 +23,42 @@
 .react-json-view {
   background-color: #282a2c !important; }
 
+.copy-icon svg {
+  opacity: 0 !important; }
+
+.click-to-add-icon svg {
+  opacity: 0 !important; }
+
+.click-to-remove-icon svg {
+  opacity: 0 !important; }
+
+.click-to-edit-icon svg {
+  opacity: 0 !important; }
+
+.copy-icon, .click-to-add-icon, .click-to-remove-icon, .click-to-edit-icon {
+  width: 15px;
+  height: 15px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  margin-right: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.3s; }
+  .copy-icon:hover, .click-to-add-icon:hover, .click-to-remove-icon:hover, .click-to-edit-icon:hover {
+    opacity: 1; }
+
+.copy-icon {
+  background-image: url(../../media/json-copy.svg); }
+
+.click-to-add-icon {
+  background-image: url(../../media/json-add.svg); }
+
+.click-to-remove-icon {
+  background-image: url(../../media/json-delete.svg); }
+
+.click-to-edit-icon {
+  background-image: url(../../media/json-edit.svg); }
+
 /*# sourceMappingURL=cssOverwrite.css.map */

@@ -5,10 +5,13 @@ import JSONContainer from "./JSONContainer";
 import Console from "../console/Console";
 import '../styles/css/appContainer.css';
 import '../styles/css/cssOverwrite.css';
+import LoaderSpinner from "../components/loaderSpinner";
 
 class AppContainer extends Component {
   state = {
     apiUrl: `http://${this.props.ip}/api/${this.props.token}/`,
+    failedLoading: false,
+    failedMessage: "",
     hueData: [],
     menuItems: [],
     activeMenu: 0,
@@ -37,9 +40,15 @@ class AppContainer extends Component {
       .getJSON(
         this.state.apiUrl
       )
-      .then(res => this.setHueData(res))
+      .then(res => {
+        if (res[0]) {
+          this.setState({ failedLoading: true, failedMessage: res[0].error.description })
+          return false;
+        }
+        return this.setHueData(res);
+      })
       .then(suc => suc && this.setState({ menuItems: this.getMenuItems() }))
-      .catch(err => console.log(err));
+      .catch(() => this.setState({ failedLoading: true, failedMessage: "connection could not be obtained" }));
 
   putHueData = (query, data) => {
     const url = this.state.apiUrl +
@@ -52,9 +61,9 @@ class AppContainer extends Component {
         url,
         data
       )
-      .then(res =>this.writeToConsole(res))
+      .then(res => this.writeToConsole(res))
       .then(() => this.getHueData())
-      .catch(err => console.log(err));
+      .catch(err => this.writeToConsole(err));
   };
 
   deleteHueData = (query) => {
@@ -67,7 +76,7 @@ class AppContainer extends Component {
       .deleteJSON(url)
       .then(res => this.writeToConsole(res))
       .then(() => this.getHueData())
-      .catch(err => console.log(err));
+      .catch(err => this.writeToConsole(err));
   }
 
   writeToConsole = write => {
@@ -80,7 +89,9 @@ class AppContainer extends Component {
     if (JSON.stringify(newData) !== JSON.stringify(this.state.hueData)) {
       this.setState({ hueData: newData });
       return true;
-    } else return false;
+    }
+    else
+      return false;
   };
 
   menuClick = menuIndex => this.setState({ activeMenu: menuIndex });
@@ -93,36 +104,44 @@ class AppContainer extends Component {
       : jsonData[this.state.menuItems[this.state.activeMenu].link];
 
   render() {
-    if (this.state.hueData.length === 0) return null;
-    else if (this.state.menuItems.length === 0) return null;
-    return (
-      <Fragment>
-        <div className="mainContainer">
-          <Menu
-            key={this.state.activeMenu}
-            menuItems={this.state.menuItems}
-            menuClick={this.menuClick}
-            menuSelected={this.state.activeMenu}
-          />
-          <JSONContainer
-            jsonData={this.getSubJsonData(this.state.hueData)}
-            menuSelected={this.state.menuItems.filter(
-              (m, i) => i === this.state.activeMenu
-            )}
-            update={this.getHueData}
-            putHueData={this.putHueData}
-            showVerificationModal={this.props.showVerificationModal}
-            showSweetAlertDialog={this.props.showSweetAlertDialog}
-            deleteHueData={this.deleteHueData}
-          />
-        </div>
-        <Console
-          show={this.state.showConsole}
-          toggleConsole={this.consoleClick}
-          consoleOutput={this.state.consoleOutput}
+    if (this.state.hueData.length === 0 || this.state.menuItems.length === 0)
+      return (
+        <LoaderSpinner 
+          isLoading={!this.state.failedLoading}
+          failMessage={this.state.failedMessage}
+          backAction={this.props.removeAuthentication}
         />
-      </Fragment>
-    );
+      )
+    else
+      return (
+        <Fragment>
+          <div className="mainContainer">
+            <Menu
+              key={this.state.activeMenu}
+              menuItems={this.state.menuItems}
+              menuClick={this.menuClick}
+              menuSelected={this.state.activeMenu}
+            />
+            <JSONContainer
+              jsonData={this.getSubJsonData(this.state.hueData)}
+              menuSelected={this.state.menuItems.filter(
+                (m, i) => i === this.state.activeMenu
+              )}
+              update={this.getHueData}
+              writeToConsole={this.writeToConsole}
+              putHueData={this.putHueData}
+              showVerificationModal={this.props.showVerificationModal}
+              showSweetAlertDialog={this.props.showSweetAlertDialog}
+              deleteHueData={this.deleteHueData}
+            />
+          </div>
+          <Console
+            show={this.state.showConsole}
+            toggleConsole={this.consoleClick}
+            consoleOutput={this.state.consoleOutput}
+          />
+        </Fragment>
+      );
   }
 }
 

@@ -31,3 +31,56 @@
 .react-json-view {
   background-color: $jsonBackground !important;
 }
+
+.copy-icon svg {
+  opacity: 0 !important;
+}
+
+.click-to-add-icon svg {
+  opacity: 0 !important;
+}
+
+.click-to-remove-icon svg {
+  opacity: 0 !important;
+}
+
+.click-to-edit-icon svg {
+  opacity: 0 !important;
+}
+
+%json-icon {
+  width: 15px;
+  height: 15px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  margin-right: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.copy-icon {
+  @extend %json-icon;
+  background-image: url(../../media/json-copy.svg);
+}
+
+.click-to-add-icon  {
+  @extend %json-icon;
+  background-image: url(../../media/json-add.svg);
+}
+
+.click-to-remove-icon  {
+  @extend %json-icon;
+  background-image: url(../../media/json-delete.svg);
+}
+
+.click-to-edit-icon {
+  @extend %json-icon;
+  background-image: url(../../media/json-edit.svg);
+}

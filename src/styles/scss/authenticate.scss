@@ -38,23 +38,6 @@
   }
 }
 
-.authButton {
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
-  background-color: $base1;
-  color: $base2;
-  margin-top: 10px;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.3s;
-
-  &:hover {
-    color: $base3;
-    background-color: $shade2;
-  }
-}
-
 .countdownLine {
   width: 100%;
   height: 35px;

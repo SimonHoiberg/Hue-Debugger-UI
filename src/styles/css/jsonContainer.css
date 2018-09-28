@@ -81,6 +81,7 @@
     color: #bbc2c2; }
 
 .menuItemActive {
+  background-color: #373b3d;
   color: white;
   border-left: 8px solid #e58b16; }
 

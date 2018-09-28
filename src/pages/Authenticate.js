@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as service from "../services/xs-json-requester";
 import "../styles/css/authenticate.css";
+import AuthButton from './../components/AuthButton';
 
 class Authenticate extends Component {
   state = {
@@ -76,9 +77,11 @@ class Authenticate extends Component {
         placeholder="Choose a developer name"
       />
 
-      <div className="authButton" onClick={this.validateInput}>
-        Begin
-      </div>
+      <AuthButton 
+        hint="Begin"
+        onClick={this.validateInput}
+      />
+      
     </div>
   );
 

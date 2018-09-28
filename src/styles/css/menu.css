@@ -23,6 +23,7 @@
     color: #bbc2c2; }
 
 .mainMenuItemActive {
+  background-color: #373b3d;
   border-bottom: 2px solid #e58b16;
   color: #bbc2c2; }
 

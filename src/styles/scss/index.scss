@@ -32,3 +32,28 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: $shade4; 
 }
+
+[data-title]:hover:after {
+  opacity: 1;
+  transition: all 0.3s;
+  visibility: visible;
+}
+[data-title]:after {
+  content: attr(data-title);
+  background-color: $shade7;
+  color: $shade3;
+  font-size: 100%;
+  position: absolute;
+  padding: 1px 5px 2px 5px;
+  bottom: -1.6em;
+  left: 100%;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #222222;
+  opacity: 0;
+  border: 1px solid #111111;
+  z-index: 99999;
+  visibility: hidden;
+}
+[data-title] {
+  position: relative;
+}

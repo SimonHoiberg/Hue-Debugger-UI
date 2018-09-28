@@ -1,40 +1,36 @@
 const menuTemplate = [
   {
-    label: "File",
+    label: "View",
     submenu: [
-      { label: "Settings" },
+      { role: "reload" },
+      { role: "togglefullscreen" },
       { type: "separator" },
       { role: "minimize" },
       { role: "close" }
     ]
   },
   {
-    label: "View",
+    label: "Advanced",
     submenu: [
-      { role: "reload" },
-      { role: "togglefullscreen" },
-      { type: "separator" },
-      {
-        label: "Advanced",
-        submenu: [
-          { 
-            label: "Clear developer tokens",
-            click() {
-              localStorage.removeItem("hueApiIp");
-              localStorage.removeItem("hueApiAuthToken");
-            } }, 
-          { role: "toggledevtools" }]
-      }
+      { role: "toggledevtools" }
     ]
   },
   {
     label: "Help",
     submenu: [
       {
-        label: "Github",
+        label: "Docs",
         click() {
           require("electron").shell.openExternal(
             "https://github.com/Silind/Hue-debugger-UI"
+          );
+        }
+      },
+      {
+        label: "Raise an issue",
+        click() {
+          require("electron").shell.openExternal(
+            "https://github.com/Silind/Hue-Debugger-UI/issues/new"
           );
         }
       }

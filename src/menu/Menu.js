@@ -30,24 +30,5 @@ const MenuItem = props => {
     </div>
   )
 }
-
-// class MenuItem extends Component {
-//   state = {
-//     hover: false,
-//     active: this.props.isActive
-//   }
-
-//   render() {
-//     return (
-//       <div 
-//         onClick={this.props.menuClick}
-//         onMouseOver={() => this.setState({ hover: true })}
-//         onMouseOut={() => this.setState({ hover: false })}
-//         style={styles.menuItem(this.state.hover, this.state.active)}>
-//           {this.props.label}
-//       </div>
-//     )
-//   }
-// }
  
 export default Menu;

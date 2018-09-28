@@ -5,20 +5,32 @@ import Authenticate from "./pages/Authenticate";
 import swal from "sweetalert";
 
 class App extends Component {
-  state = { 
+  state = {
     hueIp: null,
     authToken: null
   };
 
   componentWillMount() {
-    if (localStorage.getItem("hueApiIp") && localStorage.getItem("hueApiAuthToken"))
-      this.setState({ hueIp: localStorage.getItem("hueApiIp"), authToken: localStorage.getItem("hueApiAuthToken") });
+    if (
+      localStorage.getItem("hueApiIp") &&
+      localStorage.getItem("hueApiAuthToken")
+    )
+      this.setState({
+        hueIp: localStorage.getItem("hueApiIp"),
+        authToken: localStorage.getItem("hueApiAuthToken")
+      });
   }
 
   setAuthentication = (hueIp, authToken) => {
     localStorage.setItem("hueApiIp", hueIp);
     localStorage.setItem("hueApiAuthToken", authToken);
-    this.setState({ hueIp, authToken }); 
+    this.setState({ hueIp, authToken });
+  };
+
+  removeAuthentication = () => {
+    localStorage.removeItem("hueApiIp");
+    localStorage.removeItem("hueApiAuthToken");
+    this.setState({ hueIp: null, authToken: null });
   }
 
   showSweetAlertDialog = (title, hint, action) =>
@@ -38,11 +50,14 @@ class App extends Component {
 
   render() {
     if (this.state.hueIp && this.state.authToken)
-      return <AppContainer 
-        ip={this.state.hueIp}
-        token={this.state.authToken}
-        showSweetAlertDialog={this.showSweetAlertDialog} 
-        />;
+      return (
+        <AppContainer
+          ip={this.state.hueIp}
+          token={this.state.authToken}
+          showSweetAlertDialog={this.showSweetAlertDialog}
+          removeAuthentication={this.removeAuthentication}
+        />
+      );
     else
       return (
         <Authenticate

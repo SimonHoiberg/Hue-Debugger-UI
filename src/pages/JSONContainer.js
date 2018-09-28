@@ -6,12 +6,12 @@ class JSONContainer extends Component {
   state = {
     selectedSubItem: 0
   };
-  
+
   updateButtonRef = React.createRef();
   saveButtonRef = React.createRef();
 
   componentDidUpdate(prevProps) {
-    if (prevProps.jsonData !== this.props.jsonData)
+    if (prevProps.menuSelected[0].link !== this.props.menuSelected[0].link)
       this.setState({ selectedSubItem: 0 });
   }
 
@@ -45,12 +45,12 @@ class JSONContainer extends Component {
     if (
       this.props.menuSelected[0].link === "" ||
       this.props.menuSelected[0].link === "config"
-    ) 
+    )
       return this.props.jsonData;
     else return Object.values(this.props.jsonData)[this.state.selectedSubItem];
   };
 
-  getSrcKey = () => {
+  getSrcKeyName = () => {
     if (
       this.props.menuSelected[0].link === "" ||
       this.props.menuSelected[0].link === "config"
@@ -59,8 +59,12 @@ class JSONContainer extends Component {
     else return Object.keys(this.props.jsonData)[this.state.selectedSubItem];
   };
 
+  getSrcKey = () =>
+    Object.keys(this.props.jsonData)[this.state.selectedSubItem];
+
   constructQueryData = edit => {
     let query = this.getSrcKey() + "/";
+
     let currentLevel = edit.updated_src;
     let key = edit.name;
     let value = edit.new_value;
@@ -80,24 +84,43 @@ class JSONContainer extends Component {
       data: {
         [key]: value
       }
-    }
-  }
+    };
+  };
 
   onEdit = edit => {
     const queriedData = this.constructQueryData(edit);
     this.props.putHueData(queriedData.query, queriedData.data);
-  }
+  };
 
   onEditDelete = del => {
     this.props.showSweetAlertDialog(
       "Are you sure?",
       "Are you sure you want to delete this?",
-      () => this.onEdit(del)
+      () => {
+        if (this.props.menuSelected[0].link === "config")
+          this.onConfigDelete(del);
+        else this.onEdit(del);
+      }
     );
     return false;
-  }
+  };
 
-  onDelete = () => 
+  onConfigDelete = del => {
+    if (del.namespace[0] !== "whitelist")
+      this.props.writeToConsole([
+        {
+          "error": {
+            "type": -1,
+            "address": "/config",
+            "description": "only properties in 'whitelist' can be deleted from config"
+          }
+        }
+      ]);
+    else
+      this.props.deleteHueData("whitelist/" + del.name);
+  };
+
+  onDelete = () =>
     this.props.showSweetAlertDialog(
       "Are you sure?",
       "Are you sure you want to delete this?",
@@ -110,34 +133,38 @@ class JSONContainer extends Component {
         <div className="emptyContainer">
           <div className="emptyText">No content to show</div>
         </div>
-      )
-    else 
+      );
+    else
       return (
-      <Fragment>
-        <div className="contentContainer">
-          {this.menuItems()}
-          <div
-            style={this.getSrcKey() === "root" ? {width: "100%"} : {width: "75%"} }
-          >
-            <div className="jsonDataContainer">
-              <ReactJson
-                name={this.getSrcKey()}
-                src={this.getSrcData()}
-                theme="monokai"
-                onAdd={() => {}}
-                onEdit={edit => this.onEdit(edit)}
-                onDelete={del => this.onEditDelete(del)}
-                collapsed={this.props.menuSelected[0].link === "" ? 1 : false}
-                displayDataTypes={true}
-                displayObjectSize={false}
-                validationMessage=""
-                enableClipboard
-              />
+        <Fragment>
+          <div className="contentContainer">
+            {this.menuItems()}
+            <div
+              style={
+                this.getSrcKeyName() === "root"
+                  ? { width: "100%" }
+                  : { width: "75%" }
+              }
+            >
+              <div className="jsonDataContainer">
+                <ReactJson
+                  name={this.getSrcKeyName()}
+                  src={this.getSrcData()}
+                  theme="monokai"
+                  onAdd={() => {}}
+                  onEdit={edit => this.onEdit(edit)}
+                  onDelete={del => this.onEditDelete(del)}
+                  collapsed={this.props.menuSelected[0].link === "" ? 1 : false}
+                  displayDataTypes={true}
+                  displayObjectSize={false}
+                  validationMessage=""
+                  enableClipboard
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </Fragment>
-    );
+        </Fragment>
+      );
   }
 }
 
@@ -148,29 +175,26 @@ class MenuItem extends Component {
 
   deleteButton = () => {
     return (
-      <div 
+      <div
         className="deleteButton"
-        style={this.props.isActive ? {width: "35px"} : {width: 0}}
+        style={this.props.isActive ? { width: "35px" } : { width: 0 }}
         onClick={this.props.onDeleteClick}
       >
         <i className="material-icons">delete_forever</i>
       </div>
-    )
-  }
-     
+    );
+  };
+
   render() {
     const menuStyle = this.state.active
       ? "menuItem menuItemActive"
-      : "menuItem"
+      : "menuItem";
 
     return (
       <div>
         {this.deleteButton()}
         <div className="itemContainer">
-          <div
-            onClick={this.props.onMenuClick}
-            className={menuStyle}
-          >
+          <div onClick={this.props.onMenuClick} className={menuStyle}>
             {this.props.item.name}
           </div>
         </div>
