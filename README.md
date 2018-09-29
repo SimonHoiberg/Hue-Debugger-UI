@@ -40,11 +40,11 @@ You can get up and running with Hue Debugger UI quickly in two ways
 
 ### Download executable
 
-##### [Download for Windows](https://github.com/Silind/Hue-Debugger-UI)
+##### [Download for Windows](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.0/HueDebuggerUIInstaller.exe)
 
-##### [Download for Mac](https://github.com/Silind/Hue-Debugger-UI)
+##### [Download for Mac](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.0/HueDebuggerUIInstaller.app)
 
-##### [Download for Linux](https://github.com/Silind/Hue-Debugger-UI)
+##### [Download for Linux](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.0/HueDebuggerUIInstaller.tar.gz)
 
 ### Run with Node
 Clone this repository, and run Hue Debugger UI from a local server using Node.
@@ -88,7 +88,7 @@ _Simon Høiberg_
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the [MIT License](https://github.com/Silind/Hue-Debugger-UI/blob/master/LICENSE)
 
 ## Get Help
 - Contact me on silindsoftwaredk@gmail.com

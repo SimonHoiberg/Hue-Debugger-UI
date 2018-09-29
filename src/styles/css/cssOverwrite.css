@@ -35,18 +35,24 @@
 .click-to-edit-icon svg {
   opacity: 0 !important; }
 
-.copy-icon, .click-to-add-icon, .click-to-remove-icon, .click-to-edit-icon {
+.edit-cancel svg {
+  opacity: 0 !important; }
+
+.edit-check svg {
+  opacity: 0 !important; }
+
+.copy-icon, .click-to-add-icon, .click-to-remove-icon, .click-to-edit-icon, .edit-cancel, .edit-check {
   width: 15px;
   height: 15px;
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
   display: inline-block;
-  margin-right: 5px;
+  margin: 0 1px;
   cursor: pointer;
   opacity: 0.7;
   transition: 0.3s; }
-  .copy-icon:hover, .click-to-add-icon:hover, .click-to-remove-icon:hover, .click-to-edit-icon:hover {
+  .copy-icon:hover, .click-to-add-icon:hover, .click-to-remove-icon:hover, .click-to-edit-icon:hover, .edit-cancel:hover, .edit-check:hover {
     opacity: 1; }
 
 .copy-icon {
@@ -60,5 +66,11 @@
 
 .click-to-edit-icon {
   background-image: url(../../media/json-edit.svg); }
+
+.edit-cancel {
+  background-image: url(../../media/json-cancel.svg); }
+
+.edit-check {
+  background-image: url(../../media/json-check.svg); }
 
 /*# sourceMappingURL=cssOverwrite.css.map */

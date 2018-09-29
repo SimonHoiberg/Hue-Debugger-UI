@@ -4,18 +4,13 @@ import "../styles/css/jsonContainer.css";
 
 class JSONContainer extends Component {
   state = {
-    selectedSubItem: 0
+    selectedSubItem: this.props.activeSubMenu
   };
 
   updateButtonRef = React.createRef();
   saveButtonRef = React.createRef();
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.menuSelected[0].link !== this.props.menuSelected[0].link)
-      this.setState({ selectedSubItem: 0 });
-  }
-
-  menuClick = menuIndex => this.setState({ selectedSubItem: menuIndex });
+  
+  menuClick = menuIndex => this.props.subMenuClick(menuIndex);
 
   menuItems = () => {
     if (
@@ -28,10 +23,10 @@ class JSONContainer extends Component {
         <div className="menuContainer">
           {Object.values(this.props.jsonData).map((item, index) => (
             <MenuItem
-              key={JSON.stringify(item + index + this.state.selectedSubItem)}
+              key={JSON.stringify(item + index + this.props.activeSubMenu)}
               onMenuClick={() => this.menuClick(index)}
               onDeleteClick={this.onDelete}
-              isActive={index === this.state.selectedSubItem}
+              isActive={index === this.props.activeSubMenu}
               index={index}
               item={item}
             />
@@ -47,7 +42,7 @@ class JSONContainer extends Component {
       this.props.menuSelected[0].link === "config"
     )
       return this.props.jsonData;
-    else return Object.values(this.props.jsonData)[this.state.selectedSubItem];
+    else return Object.values(this.props.jsonData)[this.props.activeSubMenu];
   };
 
   getSrcKeyName = () => {
@@ -56,11 +51,11 @@ class JSONContainer extends Component {
       this.props.menuSelected[0].link === "config"
     )
       return "root";
-    else return Object.keys(this.props.jsonData)[this.state.selectedSubItem];
+    else return Object.keys(this.props.jsonData)[this.props.activeSubMenu];
   };
 
   getSrcKey = () =>
-    Object.keys(this.props.jsonData)[this.state.selectedSubItem];
+    Object.keys(this.props.jsonData)[this.props.activeSubMenu];
 
   constructQueryData = edit => {
     let query = this.getSrcKey() + "/";

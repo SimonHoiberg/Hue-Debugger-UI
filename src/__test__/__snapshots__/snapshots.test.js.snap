@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components should render correctly should render Authenticate correctly 1`] = `
+<div
+  className="authContainer"
+>
+  <div
+    className="authHeadline"
+  >
+    Enter bridge IP
+  </div>
+  <input
+    className="authInput"
+    onChange={[Function]}
+    placeholder="e.g. 192.168.0.100"
+    type="text"
+    value=""
+  />
+  <div
+    className="authHeadline"
+  >
+    Developer name
+  </div>
+  <input
+    className="authInput"
+    onChange={[Function]}
+    placeholder="Choose a developer name"
+    type="text"
+    value=""
+  />
+  <div
+    className="authButton"
+    onClick={[Function]}
+  >
+    Begin
+  </div>
+</div>
+`;
+
+exports[`Components should render correctly should render Console correctly 1`] = `
+<div
+  className="consoleWrapper consoleWrapperShow"
+>
+  <div
+    className="consoleHeader consoleHeaderShow"
+    onClick={undefined}
+  >
+    Console
+  </div>
+  <div
+    className="menuLine"
+    data-title="No formatting"
+  >
+    <div
+      className="menuButton"
+      onClick={[Function]}
+    >
+      <i
+        className="material-icons"
+      >
+        notes
+      </i>
+    </div>
+  </div>
+  <div
+    className="consoleContent"
+  />
+</div>
+`;
+
+exports[`Components should render correctly should render LoaderSpinner correctly 1`] = `
+<div
+  className="loaderSpinnerWrapper"
+>
+  <div
+    className="lds-ripple"
+  >
+    <div />
+    <div />
+  </div>
+  <div
+    className="loaderSpinnerText"
+  >
+    Loading Hue resources
+  </div>
+</div>
+`;

@@ -5,10 +5,10 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 95%;
-  height: 85%;
+  width: calc(100% - 60px);
+  height: calc(100% - 60px);
   display: flex;
-  margin: 2.5%; }
+  margin: 30px; }
 
 .emptyContainer {
   width: 100%;
@@ -26,7 +26,7 @@
 .menuContainer {
   overflow-y: auto;
   width: 25%;
-  margin-right: 2.5%; }
+  margin-right: 30px; }
 
 .itemContainer {
   width: 100%; }

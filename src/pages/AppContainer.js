@@ -3,8 +3,8 @@ import * as service from "../services/xs-json-requester";
 import Menu from "../menu/Menu";
 import JSONContainer from "./JSONContainer";
 import Console from "../console/Console";
-import '../styles/css/appContainer.css';
-import '../styles/css/cssOverwrite.css';
+import "../styles/css/appContainer.css";
+import "../styles/css/cssOverwrite.css";
 import LoaderSpinner from "../components/loaderSpinner";
 
 class AppContainer extends Component {
@@ -15,6 +15,7 @@ class AppContainer extends Component {
     hueData: [],
     menuItems: [],
     activeMenu: 0,
+    activeSubMenu: 0,
     showConsole: false,
     consoleOutput: [],
     verificationModal: {
@@ -26,7 +27,10 @@ class AppContainer extends Component {
   };
 
   componentDidMount = () => {
-    this.getHueData();
+    this.getHueData(); 
+    setInterval(() => {
+      this.updateHueData();
+    }, 2000);
   };
 
   getMenuItems = () =>
@@ -35,66 +39,85 @@ class AppContainer extends Component {
       link: item
     }));
 
-  getHueData = () => 
+  getHueData = () =>
     service
-      .getJSON(
-        this.state.apiUrl
-      )
-      .then(res => {
-        if (res[0]) {
-          this.setState({ failedLoading: true, failedMessage: res[0].error.description })
-          return false;
-        }
-        return this.setHueData(res);
+      .getJSON(this.state.apiUrl)
+      .then(res => this.setHueData(res))
+      .catch(() =>
+        this.setState({
+          failedLoading: true,
+          failedMessage: "connection could not be obtained"
+        })
+      );
+
+  updateHueData = () => {
+    service
+    .getJSON(this.state.apiUrl)
+    .then(res => {
+      if (this.hueDataDidUpdate(res))
+        this.setHueData(res);
+    })
+    .catch(() =>
+      this.setState({
+        failedLoading: true,
+        failedMessage: "connection has been lost"
       })
-      .then(suc => suc && this.setState({ menuItems: this.getMenuItems() }))
-      .catch(() => this.setState({ failedLoading: true, failedMessage: "connection could not be obtained" }));
+    );
+  }
 
   putHueData = (query, data) => {
-    const url = this.state.apiUrl +
-          this.state.menuItems[this.state.activeMenu].link +
-          "/" +
-          query;
+    const url =
+      this.state.apiUrl +
+      this.state.menuItems[this.state.activeMenu].link +
+      "/" +
+      query;
 
     service
-      .putJSON(
-        url,
-        data
-      )
+      .putJSON(url, data)
       .then(res => this.writeToConsole(res))
       .then(() => this.getHueData())
       .catch(err => this.writeToConsole(err));
   };
 
-  deleteHueData = (query) => {
-    const url = this.state.apiUrl +
-          this.state.menuItems[this.state.activeMenu].link +
-          "/" +
-          query;
+  deleteHueData = query => {
+    const url =
+      this.state.apiUrl +
+      this.state.menuItems[this.state.activeMenu].link +
+      "/" +
+      query;
 
     service
       .deleteJSON(url)
       .then(res => this.writeToConsole(res))
       .then(() => this.getHueData())
       .catch(err => this.writeToConsole(err));
-  }
-
-  writeToConsole = write => {
-    this.setState(prevState => ({ 
-      consoleOutput: [...prevState.consoleOutput, write]
-    }))
-  }
-
-  setHueData = newData => {
-    if (JSON.stringify(newData) !== JSON.stringify(this.state.hueData)) {
-      this.setState({ hueData: newData });
-      return true;
-    }
-    else
-      return false;
   };
 
-  menuClick = menuIndex => this.setState({ activeMenu: menuIndex });
+  writeToConsole = write =>
+    this.setState(prevState => ({
+      consoleOutput: [...prevState.consoleOutput, write]
+    }));
+
+  setHueData = newData => {
+    if (newData[0])
+      this.setState({
+        failedLoading: true,
+        failedMessage: newData[0].error.description
+      });
+    else 
+      this.setState({ hueData: newData }, () => this.setState({ menuItems: this.getMenuItems() }));
+  };
+
+  hueDataDidUpdate = newData => {
+    const filteredOldData = Object.values(this.getSubJsonData(this.state.hueData))[this.state.activeSubMenu];
+    const filteredNewData = Object.values(this.getSubJsonData(newData))[this.state.activeSubMenu];
+
+    return JSON.stringify(filteredOldData) !== JSON.stringify(filteredNewData);
+  }
+
+  menuClick = menuIndex => this.setState({ activeMenu: menuIndex, activeSubMenu: 0 });
+
+  subMenuClick = menuIndex => this.setState({ activeSubMenu: menuIndex });
 
   consoleClick = () => this.setState({ showConsole: !this.state.showConsole });
 
@@ -106,12 +129,12 @@ class AppContainer extends Component {
   render() {
     if (this.state.hueData.length === 0 || this.state.menuItems.length === 0)
       return (
-        <LoaderSpinner 
+        <LoaderSpinner
           isLoading={!this.state.failedLoading}
           failMessage={this.state.failedMessage}
           backAction={this.props.removeAuthentication}
         />
-      )
+      );
     else
       return (
         <Fragment>
@@ -127,12 +150,14 @@ class AppContainer extends Component {
               menuSelected={this.state.menuItems.filter(
                 (m, i) => i === this.state.activeMenu
               )}
-              update={this.getHueData}
-              writeToConsole={this.writeToConsole}
               putHueData={this.putHueData}
+              deleteHueData={this.deleteHueData}
+              writeToConsole={this.writeToConsole}
+              subMenuClick={this.subMenuClick}
+              activeSubMenu={this.state.activeSubMenu}
               showVerificationModal={this.props.showVerificationModal}
               showSweetAlertDialog={this.props.showSweetAlertDialog}
-              deleteHueData={this.deleteHueData}
+              
             />
           </div>
           <Console
