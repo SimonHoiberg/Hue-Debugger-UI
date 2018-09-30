@@ -4,33 +4,17 @@
 ## Table of content
 
 - [Preview](#preview)
-- [Motivation](#motivation)
-- [Getting Started](#getting-started)
+- [**Getting Started**](#getting-started)
 - [Built With](#built-with)
 - [Contributing](#contributing)
-- [Authors](#author)
 - [License](#license)
 - [Get Help](#get-help)
+- [Motivation](#motivation)
 - [Acknowledgments](#acknowledgements)
 
 ## Preview
 
 ![example-gif2.gif](https://silindstorage.blob.core.windows.net/hue-developer-api-container/example-gif3.gif)
-
-## Motivation
-
-**Philips Hue is awesome! Let's agree on that right away!**  
-Not only is Philips Hue an IoT must-have, but as a developer it's especially exciting that you can get started on building your own apps and web services that controls your light system right away!  
-
-Every Hue bridge comes with a simple web app built into it, the _API Debug Tool_, which you can use to learn how the Hue REST API works 'under the hood' and which can be useful to debug your app during development.
-
-![SuccessResponse.png](https://www.developers.meethue.com/sites/default/files/SuccessResponse.png)
-
-Yes, we all love Hue, but can we just agree that this debugger simply don't do Hue justice?  
-If you think this looks tedious and unpractical to use, you're absolutely spot on.  
-Indeed, this is not an end-user interface, but why should we developers suffer unnecessarily?
-
-This is the main motivation for building an enhanced graphical user interface to interact with the Hue REST API in a much more satisfying way.
 
 ## Getting Started
 You can get up and running with Hue Debugger UI quickly in two ways
@@ -79,11 +63,6 @@ In the case of a bug report, bugfix or a suggestions, please feel very free to o
 #### Pull request
 Pull requests are always welcome, and I'll do my best to do reviews as fast as I can.
 
-## Author
-
-**Silind Software**  
-_Simon Høiberg_
-
 ## License
 
 This project is licensed under the [MIT License](https://github.com/Silind/Hue-Debugger-UI/blob/master/LICENSE)
@@ -91,6 +70,21 @@ This project is licensed under the [MIT License](https://github.com/Silind/Hue-D
 ## Get Help
 - Contact me on silindsoftwaredk@gmail.com
 - If appropriate, [open an issue](https://github.com/Silind/Hue-Debugger-UI/issues) on Github
+
+## Motivation
+
+**Philips Hue is awesome! Let's agree on that right away!**  
+Not only is Philips Hue an IoT must-have, but as a developer it's especially exciting that you can get started on building your own apps and web services that controls your light system right away!  
+
+Every Hue bridge comes with a simple web app built into it, the _API Debug Tool_, which you can use to learn how the Hue REST API works 'under the hood' and which can be useful to debug your app during development.
+
+![SuccessResponse.png](https://www.developers.meethue.com/sites/default/files/SuccessResponse.png)
+
+Yes, we all love Hue, but can we just agree that this debugger simply don't do Hue justice?  
+If you think this looks tedious and unpractical to use, you're absolutely spot on.  
+Indeed, this is not an end-user interface, but why should we developers suffer unnecessarily?
+
+This is the main motivation for building an enhanced graphical user interface to interact with the Hue REST API in a much more satisfying way.
 
 ## Acknowledgements
 
