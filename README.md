@@ -3,15 +3,15 @@
 
 ## Table of content
 
-- [Preview](#Preview)
-- [Motivation](#Motivation)
-- [Getting Started](#Getting-Started)
-- [Built With](#Built-With)
-- [Contributing](#Contributing)
-- [Authors](#Authors)
-- [License](#License)
-- [Get Help](#Getting-Help)
-- [Acknowledgments](#Acknowledgments)
+- [Preview](#preview)
+- [Motivation](#motivation)
+- [Getting Started](#getting-started)
+- [Built With](#built-with)
+- [Contributing](#contributing)
+- [Authors](#author)
+- [License](#license)
+- [Get Help](#get-help)
+- [Acknowledgments](#acknowledgements)
 
 ## Preview
 
