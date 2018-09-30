@@ -30,15 +30,15 @@ let splashWindow;
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1250,
-    height: 750,
+    width: 1050,
+    height: 700,
     show: false
   });
 
   // Splash screen
   splashWindow = new BrowserWindow({
-    width: 500,
-    height: 500,
+    width: 450,
+    height: 450,
     transparent: true,
     frame: false,
     alwaysOnTop: true
@@ -60,7 +60,7 @@ function createWindow() {
   mainWindow.once("ready-to-show", () => setTimeout(() =>{
     splashWindow.destroy();
     mainWindow.show();
-  }, 1500));
+  }, 1800));
 
   // Emitted when the window is closed.
   mainWindow.on("closed", function() {
@@ -74,7 +74,7 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on("ready", createWindow);
+app.on("ready", () => setTimeout(createWindow));
 
 // Quit when all windows are closed.
 app.on("window-all-closed", function() {

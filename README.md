@@ -15,7 +15,7 @@
 
 ## Preview
 
-![example-gif2.gif](https://silindstorage.blob.core.windows.net/hue-developer-api-container/example-gif2.gif)
+![example-gif2.gif](https://silindstorage.blob.core.windows.net/hue-developer-api-container/example-gif3.gif)
 
 ## Motivation
 
@@ -35,16 +35,14 @@ This is the main motivation for building an enhanced graphical user interface to
 ## Getting Started
 You can get up and running with Hue Debugger UI quickly in two ways
 
-- **Install from executable .exe (Windows) or .app (Mac)**
+- **Install from executable .exe (Windows x64) or download archive (Linux x64)**
 - **Clone repository and run with Node**
 
 ### Download executable
 
-##### [Download for Windows](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.0/HueDebuggerUIInstaller.exe)
+#### [Download for Windows (x64)](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.0/HueDebuggerUIInstaller.exe)
 
-##### [Download for Mac](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.0/HueDebuggerUIInstaller.app)
-
-##### [Download for Linux](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.0/HueDebuggerUIInstaller.tar.gz)
+#### [Download for Linux (x64)](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.0/Hue-Debugger-UI-linux-x64.tar.gz)
 
 ### Run with Node
 Clone this repository, and run Hue Debugger UI from a local server using Node.
