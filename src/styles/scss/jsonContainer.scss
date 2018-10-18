@@ -23,14 +23,66 @@
   text-align: center;
 }
 
-.menuContainer {
-  overflow-y: auto;
+.menuWrapper {
   width: 25%;
   margin-right: 30px;
 }
 
+.menuContainer {
+  width: 100%;
+  height: calc(100% - 45px);
+  overflow-y: auto;
+}
+
+.createNewItemButton {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  color: $base2;
+  transition: 0.3s;
+  opacity: 0.7;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.createNewItemIcon {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  margin-right: 10px;
+  color: #e6750d;
+  font-size: 25px;
+  text-align: center;
+}
+
 .itemContainer {
   width: 100%;
+}
+
+.menuItem {
+  height: 35px;
+  line-height: 35px;
+  color: $base2;
+  padding-left: 20px;
+  background-color: $shade6;
+  overflow: hidden;
+  cursor: pointer;
+  border-left: borderLeft;
+  transition: 0.3s;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: $base5;
+    color: $base2;
+  }
 }
 
 .deleteButton {
@@ -51,43 +103,88 @@
   float: left
 }
 
+.jsonDataWrapper {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
 .jsonDataContainer {
   overflow-y: auto;
   height: 100%;
 }
 
-.deleteButton {
-  width: 35px;
+.jsonDataOverlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(28,28,28,0.5);
+}
+
+.jsonCreateModalWrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+}
+
+.jsonCreateNewEditorContainer {
+  width: 90%;
+  height: auto;
+  min-height: 150px;
+  margin-top: 15px;
+  left: 50%;
+  margin-left: -45%;
+  border-radius: 3px;
+  background-color: $modalBackground;
+  position: absolute;
+  z-index: 150;
+}
+
+.jsonCreateNewEdtior {
+  margin: 25px 0 0 15px;
+  width: calc(100% - 35px) !important;
+  min-height: 150px;
+  resize: none;
+}
+
+.jsonCreateNewCloseBtn {
+  width: 15px;
+  height: 15px;
+  background-color: rgb(253, 151, 31);
+  border-radius: 0px 0 0 3px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  display: flex;
+}
+
+%menuItemButton {
+  width: 25px;
   height: 35px;
-  line-height: 35px;
+  line-height: 33px;
   font-size: 35px;
   text-align: center;
-  color: #D7443F;
   cursor: pointer;
   float: left;
+  opacity: 0.7;
+  transition: 0.3s;
+  overflow: hidden;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.deleteButton {
+  @extend %menuItemButton;
+  color: #D7443F;
 };
 
 .emptyButton {
   width: 35px;
   height: 35px;
   float: left;
-}
-
-.menuItem {
-  height: 35px;
-  line-height: 35px;
-  color: $base2;
-  padding-left: 20px;
-  background-color: $shade6;
-  overflow: hidden;
-  cursor: pointer;
-  border-left: borderLeft;
-  transition: 0.3s;
-
-  &:hover {
-    background-color: $base5;
-    color: $base2;
-  }
 }
 
 .menuItemActive {

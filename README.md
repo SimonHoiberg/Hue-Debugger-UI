@@ -14,7 +14,7 @@
 
 ## Preview
 
-![example-gif2.gif](https://silindstorage.blob.core.windows.net/hue-developer-api-container/example-gif3.gif)
+![example-gif2.gif](https://silindstorage.blob.core.windows.net/hue-developer-api-container/example-gifv101.gif)
 
 ## Getting Started
 You can get up and running with Hue Debugger UI quickly in two ways
@@ -24,9 +24,9 @@ You can get up and running with Hue Debugger UI quickly in two ways
 
 ### Download executable
 
-#### [Download for Windows (x64)](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.0/HueDebuggerUIInstaller.exe)
+#### [Download for Windows (x64)](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.1/HueDebuggerUIInstaller.exe)
 
-#### [Download for Linux (x64)](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.0/Hue-Debugger-UI-linux-x64.tar.gz)
+#### [Download for Linux (x64)](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.1/Hue-Debugger-UI-linux-x64.zip)
 
 ### Run with Node
 Clone this repository, and run Hue Debugger UI from a local server using Node.
@@ -69,22 +69,17 @@ This project is licensed under the [MIT License](https://github.com/Silind/Hue-D
 
 ## Get Help
 - Contact me on silindsoftwaredk@gmail.com
-- If appropriate, [open an issue](https://github.com/Silind/Hue-Debugger-UI/issues) on Github
+- If appropriate, [open an issue](https://github.com/Silind/Hue-Debugger-UI/issues) on GitHub
 
 ## Motivation
-
-**Philips Hue is awesome! Let's agree on that right away!**  
-Not only is Philips Hue an IoT must-have, but as a developer it's especially exciting that you can get started on building your own apps and web services that controls your light system right away!  
-
+**An enhanced substitute for the API Debug Tool!**  
 Every Hue bridge comes with a simple web app built into it, the _API Debug Tool_, which you can use to learn how the Hue REST API works 'under the hood' and which can be useful to debug your app during development.
 
 ![SuccessResponse.png](https://www.developers.meethue.com/sites/default/files/SuccessResponse.png)
 
-Yes, we all love Hue, but can we just agree that this debugger simply don't do Hue justice?  
-If you think this looks tedious and unpractical to use, you're absolutely spot on.  
-Indeed, this is not an end-user interface, but why should we developers suffer unnecessarily?
+However, the _API Debug Tool_ quickly becomes tedious to use, and especially when doing continuous debugging of larger and more complex projects, debugging with this tool will feel cumbersome.
 
-This is the main motivation for building an enhanced graphical user interface to interact with the Hue REST API in a much more satisfying way.
+This is the main motivation for building an enhanced graphical user interface to interact with the Hue REST API in a much more convenient way.
 
 ## Acknowledgements
 

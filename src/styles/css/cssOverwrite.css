@@ -23,6 +23,29 @@
 .react-json-view {
   background-color: #282a2c !important; }
 
+.key-modal-request {
+  background-color: rgba(28, 28, 28, 0.5) !important; }
+
+.key-modal-request div {
+  background-color: #3f4547 !important; }
+
+.key-modal-request div div {
+  font-family: 'Noto Sans', sans-serif !important;
+  font-size: 14px !important;
+  color: #e58b16 !important; }
+
+.key-modal-input {
+  background-color: #1b1c1d !important;
+  color: #a8a8a0 !important; }
+
+.variable-editor {
+  width: 400px;
+  background-color: #1b1c1d !important;
+  color: #a8a8a0 !important; }
+
+.key-modal-request span:nth-child(1) {
+  background-color: #e58b16 !important; }
+
 .copy-icon svg {
   opacity: 0 !important; }
 
@@ -41,7 +64,10 @@
 .edit-check svg {
   opacity: 0 !important; }
 
-.copy-icon, .click-to-add-icon, .click-to-remove-icon, .click-to-edit-icon, .edit-cancel, .edit-check {
+.key-modal-submit svg {
+  opacity: 0 !important; }
+
+.copy-icon, .click-to-add-icon, .click-to-remove-icon, .click-to-edit-icon, .edit-cancel, .edit-check, .key-modal-submit {
   width: 15px;
   height: 15px;
   background-size: 100%;
@@ -52,7 +78,7 @@
   cursor: pointer;
   opacity: 0.7;
   transition: 0.3s; }
-  .copy-icon:hover, .click-to-add-icon:hover, .click-to-remove-icon:hover, .click-to-edit-icon:hover, .edit-cancel:hover, .edit-check:hover {
+  .copy-icon:hover, .click-to-add-icon:hover, .click-to-remove-icon:hover, .click-to-edit-icon:hover, .edit-cancel:hover, .edit-check:hover, .key-modal-submit:hover {
     opacity: 1; }
 
 .copy-icon {
@@ -72,5 +98,9 @@
 
 .edit-check {
   background-image: url(../../media/json-check.svg); }
+
+.key-modal-submit {
+  background-image: url(../../media/json-check.svg);
+  margin: 5px 0 -6px 0; }
 
 /*# sourceMappingURL=cssOverwrite.css.map */

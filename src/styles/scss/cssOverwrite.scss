@@ -32,6 +32,35 @@
   background-color: $jsonBackground !important;
 }
 
+.key-modal-request {
+  background-color: rgba(28,28,28,0.5) !important;
+}
+
+.key-modal-request div {
+  background-color: $modalBackground !important;
+}
+
+.key-modal-request div div {
+  font-family: 'Noto Sans', sans-serif !important;
+  font-size: 14px !important;
+  color: $base4 !important;
+}
+
+.key-modal-input {
+  background-color: $base3 !important;
+  color: $shade2 !important;
+}
+
+.variable-editor {
+  width: 400px;
+  background-color: $base3 !important;
+  color: $shade2 !important;
+}
+
+.key-modal-request span:nth-child(1) {
+  background-color: $base4 !important;
+}
+
 .copy-icon svg {
   opacity: 0 !important;
 }
@@ -53,6 +82,10 @@
 }
 
 .edit-check svg {
+  opacity: 0 !important;
+}
+
+.key-modal-submit svg {
   opacity: 0 !important;
 }
 
@@ -101,4 +134,10 @@
 .edit-check {
   @extend %json-icon;
   background-image: url(../../media/json-check.svg);
+}
+
+.key-modal-submit {
+  @extend %json-icon;
+  background-image: url(../../media/json-check.svg);
+  margin: 5px 0 -6px 0;
 }

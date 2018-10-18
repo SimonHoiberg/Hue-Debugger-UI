@@ -8,13 +8,24 @@ class Console extends Component {
     showFormatted: true
   };
 
+  consoleContainerRep = React.createRef();
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.consoleOutput !== this.props.consoleOutput)
+        this.scrollToBottom();
+  }
+
+  scrollToBottom = () => {
+    this.consoleContainerRep.current.scrollTo(0, this.consoleContainerRep.current.scrollHeight);
+  }
+
   toggleFormatting = () =>
     this.setState({ showFormatted: !this.state.showFormatted });
 
   consoleOutput = () =>
     this.props.consoleOutput.map((o, index) => (
       <ConsoleOutput
-        key={JSON.stringify(o).length * index}
+        key={index}
         output={o}
         formatted={this.state.showFormatted}
       />
@@ -45,7 +56,12 @@ class Console extends Component {
             <i className="material-icons">{formattedIcon}</i>
           </div>
         </div>
-        <div className="consoleContent">{this.consoleOutput()}</div>
+        <div
+          ref={this.consoleContainerRep} 
+          className="consoleContent"
+        >
+          {this.consoleOutput()}
+        </div>
       </div>
     );
   }

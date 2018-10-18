@@ -1,10 +1,10 @@
 {
   "name": "hue-debugger-ui",
   "productName": "Hue Debugger UI",
-  "description": "UI Abstraction on top of Hue Debugger Clip",
+  "description": "An interactive graphical interface for observing and interacting with Philips Hue REST API",
   "homepage": "./",
   "author": "Silind Sofware",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "electron": "^2.0.10",
@@ -13,6 +13,7 @@
     "react-dom": "^16.4.2",
     "react-json-view": "^1.19.1",
     "react-scripts": "1.1.4",
+    "react-textarea-autosize": "^7.0.4",
     "sweetalert": "^2.1.0"
   },
   "main": "src/electron/electron-starter.js",

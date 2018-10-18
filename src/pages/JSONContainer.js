@@ -1,34 +1,39 @@
 import React, { Component, Fragment } from "react";
+import AutosizeTextarea from 'react-textarea-autosize';
 import ReactJson from "react-json-view";
 import "../styles/css/jsonContainer.css";
+import AuthButton from './../components/AuthButton';
 
 class JSONContainer extends Component {
   state = {
-    selectedSubItem: this.props.activeSubMenu
-  };
+    showCreateNewModal: false,
+  }
 
-  updateButtonRef = React.createRef();
-  saveButtonRef = React.createRef();
-  
+  componentDidUpdate(prevProps) {
+    if (prevProps.activeSubMenu !== this.props.activeSubMenu || prevProps.menuSelected !== this.props.menuSelected) {
+      this.setState({ showCreateNewModal: false });
+    }
+  }
+
+  newHueDataEditorRef = React.createRef();
+
   menuClick = menuIndex => this.props.subMenuClick(menuIndex);
 
+  showCreateNewModal = showCreateNewModal => this.setState({ showCreateNewModal });
+
   menuItems = () => {
-    if (
-      this.props.menuSelected[0].link === "" ||
-      this.props.menuSelected[0].link === "config"
-    )
-      return null;
+    if (!this.props.subMenuItems) return null;
     else {
       return (
         <div className="menuContainer">
-          {Object.values(this.props.jsonData).map((item, index) => (
+          {this.props.subMenuItems.map((item, index) => (
             <MenuItem
-              key={JSON.stringify(item + index + this.props.activeSubMenu)}
+              key={JSON.stringify(item)}
               onMenuClick={() => this.menuClick(index)}
               onDeleteClick={this.onDelete}
               isActive={index === this.props.activeSubMenu}
               index={index}
-              item={item}
+              menuTitle={item.name}
             />
           ))}
         </div>
@@ -36,34 +41,13 @@ class JSONContainer extends Component {
     }
   };
 
-  getSrcData = () => {
-    if (
-      this.props.menuSelected[0].link === "" ||
-      this.props.menuSelected[0].link === "config"
-    )
-      return this.props.jsonData;
-    else return Object.values(this.props.jsonData)[this.props.activeSubMenu];
-  };
-
-  getSrcKeyName = () => {
-    if (
-      this.props.menuSelected[0].link === "" ||
-      this.props.menuSelected[0].link === "config"
-    )
-      return "root";
-    else return Object.keys(this.props.jsonData)[this.props.activeSubMenu];
-  };
-
-  getSrcKey = () =>
-    Object.keys(this.props.jsonData)[this.props.activeSubMenu];
-
   constructQueryData = edit => {
-    let query = this.getSrcKey() + "/";
+    let query = this.props.jsonData.keyName + "/";
 
     let currentLevel = edit.updated_src;
     let key = edit.name;
     let value = edit.new_value;
-
+    
     for (let i = 0; i < edit.namespace.length; i++) {
       currentLevel = currentLevel[edit.namespace[i]];
       if (Array.isArray(currentLevel)) {
@@ -74,12 +58,13 @@ class JSONContainer extends Component {
       query += edit.namespace[i] + "/";
     }
 
-    return {
-      query: query,
-      data: {
-        [key]: value
-      }
-    };
+    let data = { [key]: value };
+
+    if (edit.namespace[0] === "lightstates") {
+      data = edit.updated_src.lightstates[edit.namespace[1]];
+    }
+
+    return { query, data };
   };
 
   onEdit = edit => {
@@ -92,7 +77,7 @@ class JSONContainer extends Component {
       "Are you sure?",
       "Are you sure you want to delete this?",
       () => {
-        if (this.props.menuSelected[0].link === "config")
+        if (!this.props.jsonData.keyName)
           this.onConfigDelete(del);
         else this.onEdit(del);
       }
@@ -119,69 +104,125 @@ class JSONContainer extends Component {
     this.props.showSweetAlertDialog(
       "Are you sure?",
       "Are you sure you want to delete this?",
-      () => this.props.deleteHueData(this.getSrcKey())
+      () => this.props.deleteHueData(this.props.jsonData.keyName)
     );
 
-  render() {
-    if (this.getSrcData() === undefined)
-      return (
-        <div className="emptyContainer">
+  renderMenu = () => {
+    if (!this.props.jsonData.keyName && this.props.jsonData.data) return null;
+    return (
+      <div className="menuWrapper">
+        <div className="createNewItemButton" onClick={() => this.showCreateNewModal(true)}>
+          <i className="material-icons createNewItemIcon">add_circle</i>
+          Create new item
+        </div>
+        {this.menuItems()}
+      </div>
+    )
+  }
+
+  renderCreateNewModal = () => {
+    return (
+      <div className="jsonCreateModalWrapper">
+        <div className="jsonCreateNewEditorContainer">
+          <div className="jsonCreateNewCloseBtn" onClick={() => this.showCreateNewModal(false)}>
+            <svg viewBox="0 0 40 40" fill="currentColor" preserveAspectRatio="xMidYMid meet" style={{verticalAlign: "middle", color: "rgb(56, 56, 48)", fontSize: "15px", transform: "rotate(45deg)", height: "1em", width: "1em"}}><g><path d="m31.6 21.6h-10v10h-3.2v-10h-10v-3.2h10v-10h3.2v10h10v3.2z"></path></g></svg>
+          </div>
+          <AutosizeTextarea 
+            className="variable-editor jsonCreateNewEdtior" 
+            ref={this.newHueDataEditorRef}
+            />
+          <AuthButton
+            hint="Create new"
+            onClick={() => {
+              if (this.newHueDataEditorRef.current._ref.value) {
+                try {
+                  const newHueData = JSON.parse(this.newHueDataEditorRef.current._ref.value);
+                  this.props.createNewHueData(newHueData);
+                  this.setState({ showCreateNewModal: false });
+                }
+                catch (ex) {
+                  this.newHueDataEditorRef.current._ref.style.border = '2px solid #932a2a';
+                  this.props.writeToConsole([
+                    {
+                      "error": {
+                        "type": -1,
+                        "address": "<< create new item >>",
+                        "description": ex
+                      }
+                    }
+                  ]);
+                }
+              }
+            }}
+          />
+        </div>
+        <div className="jsonDataOverlay" onClick={() => this.showCreateNewModal(false)}></div>
+      </div>
+    )
+  }
+
+  renderJsonContent = () => {
+    const jsonViewer = !this.props.jsonData.data
+      ? <div className="emptyContainer">
           <div className="emptyText">No content to show</div>
         </div>
-      );
-    else
+      : <ReactJson
+          name={this.props.jsonData.keyName}
+          src={this.props.jsonData.data}
+          theme="monokai"
+          onAdd={() => {}}
+          onEdit={edit => this.onEdit(edit)}
+          onDelete={del => this.onEditDelete(del)}
+          collapsed={false}
+          displayDataTypes={true}
+          displayObjectSize={false}
+          validationMessage=""
+          enableClipboard
+        />
+
       return (
-        <Fragment>
-          <div className="contentContainer">
-            {this.menuItems()}
-            <div
-              style={
-                this.getSrcKeyName() === "root"
-                  ? { width: "100%" }
-                  : { width: "75%" }
-              }
-            >
-              <div className="jsonDataContainer">
-                <ReactJson
-                  name={this.getSrcKeyName()}
-                  src={this.getSrcData()}
-                  theme="monokai"
-                  onAdd={() => {}}
-                  onEdit={edit => this.onEdit(edit)}
-                  onDelete={del => this.onEditDelete(del)}
-                  collapsed={this.props.menuSelected[0].link === "" ? 1 : false}
-                  displayDataTypes={true}
-                  displayObjectSize={false}
-                  validationMessage=""
-                  enableClipboard
-                />
-              </div>
-            </div>
+        <div className="jsonDataWrapper">
+          {this.state.showCreateNewModal && this.renderCreateNewModal()}
+          <div className="jsonDataContainer">
+            {jsonViewer}
           </div>
-        </Fragment>
-      );
+        </div>
+      )
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <div className="contentContainer">
+          {this.renderMenu()}
+          <div
+            style={
+              !this.props.subMenuItems
+                ? { width: "100%" }
+                : { width: "75%" }
+            }
+          >
+            {this.renderJsonContent()}
+          </div>
+        </div>
+      </Fragment>
+    );
   }
 }
 
 class MenuItem extends Component {
-  state = {
-    active: this.props.isActive
-  };
-
-  deleteButton = () => {
-    return (
-      <div
-        className="deleteButton"
-        style={this.props.isActive ? { width: "35px" } : { width: 0 }}
-        onClick={this.props.onDeleteClick}
-      >
-        <i className="material-icons">delete_forever</i>
-      </div>
-    );
-  };
+  deleteButton = () => (
+    <div
+      className="deleteButton"
+      style={this.props.isActive ? { width: "35px" } : { width: 0 }}
+      onClick={this.props.onDeleteClick}
+    >
+      <i className="material-icons">delete_forever</i>
+    </div>
+  );
 
   render() {
-    const menuStyle = this.state.active
+    const menuStyle = this.props.isActive
       ? "menuItem menuItemActive"
       : "menuItem";
 
@@ -190,7 +231,7 @@ class MenuItem extends Component {
         {this.deleteButton()}
         <div className="itemContainer">
           <div onClick={this.props.onMenuClick} className={menuStyle}>
-            {this.props.item.name}
+            {this.props.menuTitle}
           </div>
         </div>
       </div>

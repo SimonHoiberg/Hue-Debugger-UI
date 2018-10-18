@@ -6,7 +6,8 @@
   bottom: 0;
   left: 0;
   overflow: hidden;
-  transition: 0.15s; }
+  transition: 0.15s;
+  z-index: 300; }
 
 .consoleWrapperShow {
   height: 300px; }
@@ -59,7 +60,6 @@
   cursor: pointer; }
 
 .consoleContent {
-  width: calc(100% - 40px);
   height: 230px;
   padding: 20px 65px;
   overflow-y: auto;

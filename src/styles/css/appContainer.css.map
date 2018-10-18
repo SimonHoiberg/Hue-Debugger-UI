@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AACA,cAAe;ECEb,qBAAqB,EAAE,IAAI;EAC3B,mBAAmB,EAAE,IAAI;EACzB,kBAAkB,EAAE,IAAI;EACxB,gBAAgB,EAAE,IAAI;EACtB,eAAe,EAAE,IAAI;EACrB,WAAW,EAAE,IAAI;EDLjB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,iBAAiB;EACzB,QAAQ,EAAE,QAAQ;;AAGpB,WAAY;EACV,UAAU,EAAE,MAAM;EAClB,KAAK,EETC,OAAO;EFUb,OAAO,EAAE,IAAI",
-"sources": ["../scss/appContainer.scss","../main.scss","../colors-dark.scss"],
+"mappings": "AACA,cAAe;ECEb,qBAAqB,EAAE,IAAI;EAC3B,mBAAmB,EAAE,IAAI;EACzB,kBAAkB,EAAE,IAAI;EACxB,gBAAgB,EAAE,IAAI;EACtB,eAAe,EAAE,IAAI;EACrB,WAAW,EAAE,IAAI;EDLjB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,iBAAiB;EACzB,QAAQ,EAAE,QAAQ",
+"sources": ["../scss/appContainer.scss","../main.scss"],
 "names": [],
 "file": "appContainer.css"
 }
