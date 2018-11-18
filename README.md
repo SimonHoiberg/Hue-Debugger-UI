@@ -1,4 +1,10 @@
-# Hue Debugger UI
+# Hue Debugger UI   
+[![Github License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Silind/Hue-Debugger-UI/blob/master/LICENSE)
+[![React Version](https://img.shields.io/badge/react-v16.4.2-blue.svg)](https://github.com/facebook/react)
+[![Electron Version](https://img.shields.io/badge/electron-v2.0.10-blue.svg)](https://github.com/electron/electron)
+[![Build Status](https://travis-ci.com/Silind/Hue-Debugger-UI.svg?branch=master)](https://travis-ci.com/Silind/Hue-Debugger-UI)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+
 #### An interactive graphical interface for observing and interacting with Philips Hue REST API
 
 ## Table of content
