@@ -1,11 +1,11 @@
-# Hue Debugger UI   
-[![Github License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Silind/Hue-Debugger-UI/blob/master/LICENSE)
+# Hue Debugger UI
+[![Github License](https://img.shields.io/github/license/Silind/Hue-Debugger-UI.svg)](https://github.com/Silind/Hue-Debugger-UI/blob/master/LICENSE)
+[![Build Status](https://travis-ci.com/Silind/Hue-Debugger-UI.svg?branch=master)](https://travis-ci.com/Silind/Hue-Debugger-UI)
+[![Requirements Status](https://requires.io/github/Silind/Hue-Debugger-UI/requirements.svg?branch=master)](https://requires.io/github/Silind/Hue-Debugger-UI/requirements/?branch=master)
 [![React Version](https://img.shields.io/badge/react-v16.4.2-blue.svg)](https://github.com/facebook/react)
 [![Electron Version](https://img.shields.io/badge/electron-v2.0.10-blue.svg)](https://github.com/electron/electron)
-[![Build Status](https://travis-ci.com/Silind/Hue-Debugger-UI.svg?branch=master)](https://travis-ci.com/Silind/Hue-Debugger-UI)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-#### An interactive graphical interface for observing and interacting with Philips Hue REST API
+#### Graphical interface for observing and interacting directly with Hue API
 
 ## Table of content
 
@@ -19,8 +19,7 @@
 - [Acknowledgments](#acknowledgements)
 
 ## Preview
-
-![example-gif2.gif](https://silindstorage.blob.core.windows.net/hue-developer-api-container/example-gifv101.gif)
+![example1](https://silind.com/hue-debugger-ui/example-gif.gif)
 
 ## Getting Started
 You can get up and running with Hue Debugger UI quickly in two ways
@@ -78,10 +77,10 @@ This project is licensed under the [MIT License](https://github.com/Silind/Hue-D
 - If appropriate, [open an issue](https://github.com/Silind/Hue-Debugger-UI/issues) on GitHub
 
 ## Motivation
-**An enhanced substitute for the API Debug Tool!**  
+**An enhanced substitute for the API Debug Tool**  
 Every Hue bridge comes with a simple web app built into it, the _API Debug Tool_, which you can use to learn how the Hue REST API works 'under the hood' and which can be useful to debug your app during development.
 
-![SuccessResponse.png](https://www.developers.meethue.com/sites/default/files/SuccessResponse.png)
+<img src="https://silind.com/hue-debugger-ui/example-png.png" width="500" />
 
 However, the _API Debug Tool_ quickly becomes tedious to use, and especially when doing continuous debugging of larger and more complex projects, debugging with this tool will feel cumbersome.
 
