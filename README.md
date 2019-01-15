@@ -29,9 +29,9 @@ You can get up and running with Hue Debugger UI quickly in two ways
 
 ### Download executable
 
-#### [Download for Windows (x64)](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.1/HueDebuggerUIInstaller.exe)
+#### [Download for Windows (x64)](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.1.0/HueDebuggerUIInstaller.exe)
 
-#### [Download for Linux (x64)](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.1/Hue-Debugger-UI-linux-x64.zip)
+#### [Download for Linux (x64)](https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.1.0/Hue-Debugger-UI-linux-x64.zip)
 
 ### Run with Node
 Clone this repository, and run Hue Debugger UI from a local server using Node.
@@ -89,4 +89,5 @@ This is the main motivation for building an enhanced graphical user interface to
 ## Acknowledgements
 
 - [react-json-view](https://github.com/mac-s-g/react-json-view) - Amazing React component for visualizing JSON! Huge thumbs up!
-- [SweetAlert](https://sweetalert.js.org/) - Awesome library for showing alert boxes.
+- [react-json-editor-ajrm](https://github.com/AndrewRedican/react-json-editor-ajrm) - React component for editing, viewing and debugging Javascript objects.
+- [SweetAlert](https://sweetalert.js.org/) - JavaScript library for showing alert boxes.

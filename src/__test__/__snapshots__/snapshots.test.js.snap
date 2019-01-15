@@ -43,16 +43,15 @@ exports[`Components should render correctly should render Console correctly 1`] 
 >
   <div
     className="consoleHeader consoleHeaderShow"
-    onClick={undefined}
   >
     Console
   </div>
   <div
     className="menuLine"
-    data-title="No formatting"
   >
     <div
       className="menuButton"
+      data-title="No formatting"
       onClick={[Function]}
     >
       <i

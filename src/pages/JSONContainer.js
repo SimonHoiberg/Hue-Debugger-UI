@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from "react";
-import AutosizeTextarea from 'react-textarea-autosize';
 import ReactJson from "react-json-view";
 import "../styles/css/jsonContainer.css";
 import AuthButton from './../components/AuthButton';
+import JSONTextEditor from "../components/JSONTextEditor";
 
 class JSONContainer extends Component {
   state = {
     showCreateNewModal: false,
+    editorContent: "",
+    editorError: false,
   }
 
   componentDidUpdate(prevProps) {
@@ -14,8 +16,6 @@ class JSONContainer extends Component {
       this.setState({ showCreateNewModal: false });
     }
   }
-
-  newHueDataEditorRef = React.createRef();
 
   menuClick = menuIndex => this.props.subMenuClick(menuIndex);
 
@@ -127,31 +127,16 @@ class JSONContainer extends Component {
           <div className="jsonCreateNewCloseBtn" onClick={() => this.showCreateNewModal(false)}>
             <svg viewBox="0 0 40 40" fill="currentColor" preserveAspectRatio="xMidYMid meet" style={{verticalAlign: "middle", color: "rgb(56, 56, 48)", fontSize: "15px", transform: "rotate(45deg)", height: "1em", width: "1em"}}><g><path d="m31.6 21.6h-10v10h-3.2v-10h-10v-3.2h10v-10h3.2v10h10v3.2z"></path></g></svg>
           </div>
-          <AutosizeTextarea 
-            className="variable-editor jsonCreateNewEdtior" 
-            ref={this.newHueDataEditorRef}
-            />
+          <JSONTextEditor 
+            className="variable-editor jsonCreateNewEdtior"
+            onChange={content => this.setState({ editorContent: content.jsObject, editorError: content.error })}
+          />
           <AuthButton
             hint="Create new"
             onClick={() => {
-              if (this.newHueDataEditorRef.current._ref.value) {
-                try {
-                  const newHueData = JSON.parse(this.newHueDataEditorRef.current._ref.value);
-                  this.props.createNewHueData(newHueData);
-                  this.setState({ showCreateNewModal: false });
-                }
-                catch (ex) {
-                  this.newHueDataEditorRef.current._ref.style.border = '2px solid #932a2a';
-                  this.props.writeToConsole([
-                    {
-                      "error": {
-                        "type": -1,
-                        "address": "<< create new item >>",
-                        "description": ex
-                      }
-                    }
-                  ]);
-                }
+              if (this.state.editorContent && !this.state.editorError) {
+                this.props.createNewHueData(this.state.editorContent);
+                this.setState({ showCreateNewModal: false });
               }
             }}
           />
@@ -227,12 +212,10 @@ class MenuItem extends Component {
       : "menuItem";
 
     return (
-      <div>
+      <div className="itemContainer">
         {this.deleteButton()}
-        <div className="itemContainer">
-          <div onClick={this.props.onMenuClick} className={menuStyle}>
-            {this.props.menuTitle}
-          </div>
+        <div onClick={this.props.onMenuClick} className={menuStyle} data-title={this.props.menuTitle}>
+          {this.props.menuTitle}
         </div>
       </div>
     );

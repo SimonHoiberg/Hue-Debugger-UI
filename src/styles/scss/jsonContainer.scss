@@ -1,7 +1,6 @@
 @import '../main';
 
 .contentContainer {
-  @include no-select;
   width: calc(100% - 60px);
   height: calc(100% - 60px);
   display: flex;
@@ -24,6 +23,7 @@
 }
 
 .menuWrapper {
+  @include no-select;
   width: 25%;
   margin-right: 30px;
 }
@@ -32,6 +32,7 @@
   width: 100%;
   height: calc(100% - 45px);
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .createNewItemButton {
@@ -63,26 +64,41 @@
 
 .itemContainer {
   width: 100%;
+  display: flex;
 }
 
 .menuItem {
+  width: 100%;
   height: 35px;
   line-height: 35px;
   color: $base2;
   padding-left: 20px;
   background-color: $shade6;
-  overflow: hidden;
   cursor: pointer;
   border-left: borderLeft;
   transition: 0.3s;
-  overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 
   &:hover {
     background-color: $base5;
     color: $base2;
   }
+
+  @include toolTip {
+    content: attr(data-title);
+    margin-top: 25px;
+    left: 45px;
+  }
+
+  position: static;
+}
+
+.menuItemActive {
+  background-color: $base1;
+  color: white;
+  border-left: 8px solid $base4;
 }
 
 .deleteButton {
@@ -92,9 +108,7 @@
   text-align: center;
   color: #D7443F;
   cursor: pointer;
-  float: left;
   transition: 0.3s;
-  overflow: hidden;
 }
 
 .emptyButton {
@@ -131,6 +145,7 @@
   width: 90%;
   height: auto;
   min-height: 150px;
+  max-height: calc(100% - 50px);
   margin-top: 15px;
   left: 50%;
   margin-left: -45%;
@@ -138,13 +153,8 @@
   background-color: $modalBackground;
   position: absolute;
   z-index: 150;
-}
-
-.jsonCreateNewEdtior {
-  margin: 25px 0 0 15px;
-  width: calc(100% - 35px) !important;
-  min-height: 150px;
-  resize: none;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .jsonCreateNewCloseBtn {
@@ -185,10 +195,4 @@
   width: 35px;
   height: 35px;
   float: left;
-}
-
-.menuItemActive {
-  background-color: $base1;
-  color: white;
-  border-left: 8px solid $base4;
 }

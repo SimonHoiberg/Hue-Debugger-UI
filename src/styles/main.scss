@@ -8,3 +8,32 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+@mixin toolTip {
+  position: relative;
+
+    &:hover:after {
+      opacity: 1;
+      transition: all 0.3s;
+      transition-delay: 0.5s;
+      visibility: visible;
+    }
+
+    &:after {
+      background-color: #c1dfeb;
+      color: #18191a;
+      font-size: 14px !important;
+      line-height: 16px !important;
+      font-family: 'Noto Sans', sans-serif !important;
+      padding: 1px 5px 2px 5px !important;
+      left: 100%;
+      position: absolute;
+      white-space: nowrap;
+      box-shadow: 1px 1px 3px #222222;
+      opacity: 0;
+      border: 1px solid #111111;
+      z-index: 99999;
+      visibility: hidden;
+      @content;
+    }
+}

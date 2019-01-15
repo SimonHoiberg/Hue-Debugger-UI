@@ -19,7 +19,7 @@ const menuTemplate = [
     label: "Help",
     submenu: [
       {
-        label: "Docs",
+        label: "GitHub",
         click() {
           require("electron").shell.openExternal(
             "https://github.com/Silind/Hue-debugger-UI"

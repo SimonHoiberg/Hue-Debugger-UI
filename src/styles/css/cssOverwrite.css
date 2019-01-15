@@ -1,73 +1,93 @@
 .validation-failure {
-  display: none; }
+  display: none;
+}
 
 .swal-overlay {
   background-color: rgba(0, 0, 0, 0.6);
-  outline: none; }
+  outline: none;
+}
 
 .swal-modal {
   background-color: #373b3d;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6); }
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+}
 
 .swal-title, .swal-text {
-  color: #c1dfeb; }
+  color: #c1dfeb;
+}
 
 .swal-button--confirm {
   background-color: #a8a8a0;
-  color: #1b1c1d; }
+  color: #1b1c1d;
+}
 
 .swal-button--cancel {
   background-color: #1b1c1d;
-  color: #bbc2c2; }
+  color: #bbc2c2;
+}
 
 .react-json-view {
-  background-color: #282a2c !important; }
+  background-color: #282a2c !important;
+}
 
 .key-modal-request {
-  background-color: rgba(28, 28, 28, 0.5) !important; }
+  background-color: rgba(28, 28, 28, 0.5) !important;
+}
 
 .key-modal-request div {
-  background-color: #3f4547 !important; }
+  background-color: #3f4547 !important;
+}
 
 .key-modal-request div div {
-  font-family: 'Noto Sans', sans-serif !important;
+  font-family: "Noto Sans", sans-serif !important;
   font-size: 14px !important;
-  color: #e58b16 !important; }
+  color: #e58b16 !important;
+}
 
 .key-modal-input {
   background-color: #1b1c1d !important;
-  color: #a8a8a0 !important; }
+  color: #a8a8a0 !important;
+}
 
 .variable-editor {
   width: 400px;
   background-color: #1b1c1d !important;
-  color: #a8a8a0 !important; }
+  color: #a8a8a0 !important;
+}
 
 .key-modal-request span:nth-child(1) {
-  background-color: #e58b16 !important; }
+  background-color: #e58b16 !important;
+}
 
 .copy-icon svg {
-  opacity: 0 !important; }
+  opacity: 0 !important;
+}
 
 .click-to-add-icon svg {
-  opacity: 0 !important; }
+  opacity: 0 !important;
+}
 
 .click-to-remove-icon svg {
-  opacity: 0 !important; }
+  opacity: 0 !important;
+}
 
 .click-to-edit-icon svg {
-  opacity: 0 !important; }
+  opacity: 0 !important;
+}
 
 .edit-cancel svg {
-  opacity: 0 !important; }
+  opacity: 0 !important;
+}
 
 .edit-check svg {
-  opacity: 0 !important; }
+  opacity: 0 !important;
+}
 
 .key-modal-submit svg {
-  opacity: 0 !important; }
+  opacity: 0 !important;
+}
 
-.copy-icon, .click-to-add-icon, .click-to-remove-icon, .click-to-edit-icon, .edit-cancel, .edit-check, .key-modal-submit {
+.key-modal-submit, .edit-check, .edit-cancel, .click-to-edit-icon, .click-to-remove-icon, .click-to-add-icon, .copy-icon {
   width: 15px;
   height: 15px;
   background-size: 100%;
@@ -77,30 +97,234 @@
   margin: 0 1px;
   cursor: pointer;
   opacity: 0.7;
-  transition: 0.3s; }
-  .copy-icon:hover, .click-to-add-icon:hover, .click-to-remove-icon:hover, .click-to-edit-icon:hover, .edit-cancel:hover, .edit-check:hover, .key-modal-submit:hover {
-    opacity: 1; }
+  transition: 0.3s;
+}
+.key-modal-submit:hover, .edit-check:hover, .edit-cancel:hover, .click-to-edit-icon:hover, .click-to-remove-icon:hover, .click-to-add-icon:hover, .copy-icon:hover {
+  opacity: 1;
+}
 
 .copy-icon {
-  background-image: url(../../media/json-copy.svg); }
+  background-image: url(../../media/json-copy.svg);
+  position: relative;
+}
+.copy-icon:hover:after {
+  opacity: 1;
+  transition: all 0.3s;
+  transition-delay: 0.5s;
+  visibility: visible;
+}
+.copy-icon:after {
+  background-color: #c1dfeb;
+  color: #18191a;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  font-family: "Noto Sans", sans-serif !important;
+  padding: 1px 5px 2px 5px !important;
+  left: 100%;
+  position: absolute;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #222222;
+  opacity: 0;
+  border: 1px solid #111111;
+  z-index: 99999;
+  visibility: hidden;
+  content: "Copy to clipboard";
+}
 
 .click-to-add-icon {
-  background-image: url(../../media/json-add.svg); }
+  background-image: url(../../media/json-add.svg);
+  position: relative;
+}
+.click-to-add-icon:hover:after {
+  opacity: 1;
+  transition: all 0.3s;
+  transition-delay: 0.5s;
+  visibility: visible;
+}
+.click-to-add-icon:after {
+  background-color: #c1dfeb;
+  color: #18191a;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  font-family: "Noto Sans", sans-serif !important;
+  padding: 1px 5px 2px 5px !important;
+  left: 100%;
+  position: absolute;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #222222;
+  opacity: 0;
+  border: 1px solid #111111;
+  z-index: 99999;
+  visibility: hidden;
+  content: "Add new item";
+}
 
 .click-to-remove-icon {
-  background-image: url(../../media/json-delete.svg); }
+  background-image: url(../../media/json-delete.svg);
+  position: relative;
+}
+.click-to-remove-icon:hover:after {
+  opacity: 1;
+  transition: all 0.3s;
+  transition-delay: 0.5s;
+  visibility: visible;
+}
+.click-to-remove-icon:after {
+  background-color: #c1dfeb;
+  color: #18191a;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  font-family: "Noto Sans", sans-serif !important;
+  padding: 1px 5px 2px 5px !important;
+  left: 100%;
+  position: absolute;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #222222;
+  opacity: 0;
+  border: 1px solid #111111;
+  z-index: 99999;
+  visibility: hidden;
+  content: "Remove item";
+}
 
 .click-to-edit-icon {
-  background-image: url(../../media/json-edit.svg); }
+  background-image: url(../../media/json-edit.svg);
+  position: relative;
+}
+.click-to-edit-icon:hover:after {
+  opacity: 1;
+  transition: all 0.3s;
+  transition-delay: 0.5s;
+  visibility: visible;
+}
+.click-to-edit-icon:after {
+  background-color: #c1dfeb;
+  color: #18191a;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  font-family: "Noto Sans", sans-serif !important;
+  padding: 1px 5px 2px 5px !important;
+  left: 100%;
+  position: absolute;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #222222;
+  opacity: 0;
+  border: 1px solid #111111;
+  z-index: 99999;
+  visibility: hidden;
+  content: "Edit item";
+}
 
 .edit-cancel {
-  background-image: url(../../media/json-cancel.svg); }
+  background-image: url(../../media/json-cancel.svg);
+  position: relative;
+}
+.edit-cancel:hover:after {
+  opacity: 1;
+  transition: all 0.3s;
+  transition-delay: 0.5s;
+  visibility: visible;
+}
+.edit-cancel:after {
+  background-color: #c1dfeb;
+  color: #18191a;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  font-family: "Noto Sans", sans-serif !important;
+  padding: 1px 5px 2px 5px !important;
+  left: 100%;
+  position: absolute;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #222222;
+  opacity: 0;
+  border: 1px solid #111111;
+  z-index: 99999;
+  visibility: hidden;
+  content: "Cancel without saving";
+}
 
 .edit-check {
-  background-image: url(../../media/json-check.svg); }
+  background-image: url(../../media/json-check.svg);
+  position: relative;
+}
+.edit-check:hover:after {
+  opacity: 1;
+  transition: all 0.3s;
+  transition-delay: 0.5s;
+  visibility: visible;
+}
+.edit-check:after {
+  background-color: #c1dfeb;
+  color: #18191a;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  font-family: "Noto Sans", sans-serif !important;
+  padding: 1px 5px 2px 5px !important;
+  left: 100%;
+  position: absolute;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #222222;
+  opacity: 0;
+  border: 1px solid #111111;
+  z-index: 99999;
+  visibility: hidden;
+  content: "Save as string";
+}
 
 .key-modal-submit {
   background-image: url(../../media/json-check.svg);
-  margin: 5px 0 -6px 0; }
+  margin: 5px 0 -6px 0;
+  position: relative;
+}
+.key-modal-submit:hover:after {
+  opacity: 1;
+  transition: all 0.3s;
+  transition-delay: 0.5s;
+  visibility: visible;
+}
+.key-modal-submit:after {
+  background-color: #c1dfeb;
+  color: #18191a;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  font-family: "Noto Sans", sans-serif !important;
+  padding: 1px 5px 2px 5px !important;
+  left: 100%;
+  position: absolute;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #222222;
+  opacity: 0;
+  border: 1px solid #111111;
+  z-index: 99999;
+  visibility: hidden;
+  content: "Add item";
+}
+
+.detected {
+  position: relative;
+}
+.detected:hover:after {
+  opacity: 1;
+  transition: all 0.3s;
+  transition-delay: 0.5s;
+  visibility: visible;
+}
+.detected:after {
+  background-color: #c1dfeb;
+  color: #18191a;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  font-family: "Noto Sans", sans-serif !important;
+  padding: 1px 5px 2px 5px !important;
+  left: 100%;
+  position: absolute;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #222222;
+  opacity: 0;
+  border: 1px solid #111111;
+  z-index: 99999;
+  visibility: hidden;
+  content: "Save as suggested data-type";
+}
 
 /*# sourceMappingURL=cssOverwrite.css.map */

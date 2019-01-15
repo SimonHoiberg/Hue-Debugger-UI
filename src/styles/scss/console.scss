@@ -8,7 +8,7 @@
   bottom: 0;
   left: 0;
   overflow: hidden;
-  transition: 0.15s;
+  transition: 0.1s;
   z-index: 300;
 }
 
@@ -36,7 +36,7 @@
 .outputWrapper {
   white-space: pre;
   margin-bottom: 10;
-  transition: 0.3s;
+  transition: 0.15s;
   color: $base5;
 
   &:hover {
@@ -47,7 +47,7 @@
 .menuLine {
   @include no-select;
   height: 35px;
-  position: absolute
+  position: absolute;
 }
 
 .menuButton {
@@ -57,7 +57,10 @@
   text-align: center;
   color: $base5;
   font-size: 30px;
-  cursor: pointer
+  cursor: pointer;
+  @include toolTip {
+    content: attr(data-title);
+  }
 }
 
 .consoleContent {

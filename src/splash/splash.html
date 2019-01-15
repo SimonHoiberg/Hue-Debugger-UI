@@ -8,12 +8,25 @@
   body {
     padding: 0;
     margin: 0;
-    background: transparent;
+    background: #ccc;
+  }
+
+  span {
+    opacity: 0.7;
+  }
+
+  .splash-container {
+    width: 450px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1b1c1d;
   }
 
   .splash-wrapper {
-    width: 450px;
-    height: 450px;
+    width: 400px;
+    height: 400px;
     background: url(../media/bridge_v2.svg);
     background-position: center;
     background-repeat: no-repeat;
@@ -31,8 +44,8 @@
   }
 
   .splash-center {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     background-color: #389de0;
     border-radius: 50%;
     position: absolute;
@@ -41,13 +54,13 @@
 
   .splash-title {
     width: 100%;
-    height: 50px;
+    height: 40px;
     font-family: 'Titillium Web', sans-serif;
-    font-size: 38px;
+    font-size: 32px;
     color: white;
     position: relative;
     text-align: center;
-    margin-top: 350px;
+    margin-top: 300px;
   }
 
   /* Loader 6 */
@@ -104,10 +117,12 @@
   }
 </style>
 
-<div class="splash-wrapper">
-  <div class="splash-title">Hue Debugger UI</div>
-  <div class="loader-6"><span></span></div>
-  <div class="splash-center"></div>
+<div class="splash-container">
+  <div class="splash-wrapper">
+    <div class="splash-title"><span>{</span> Hue Debugger<span>:</span> UI <span>}</span></div>
+    <div class="loader-6"><span></span></div>
+    <div class="splash-center"></div>
+  </div>
 </div>
 
 </html>

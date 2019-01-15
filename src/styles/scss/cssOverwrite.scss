@@ -109,35 +109,62 @@
 .copy-icon {
   @extend %json-icon;
   background-image: url(../../media/json-copy.svg);
+  @include toolTip {
+    content: "Copy to clipboard";
+  }
 }
 
 .click-to-add-icon  {
   @extend %json-icon;
   background-image: url(../../media/json-add.svg);
+  @include toolTip {
+    content: "Add new item";
+  }
 }
 
 .click-to-remove-icon  {
   @extend %json-icon;
   background-image: url(../../media/json-delete.svg);
+  @include toolTip {
+    content: "Remove item";
+  }
 }
 
 .click-to-edit-icon {
   @extend %json-icon;
   background-image: url(../../media/json-edit.svg);
+  @include toolTip {
+    content: "Edit item";
+  }
 }
 
 .edit-cancel {
   @extend %json-icon;
   background-image: url(../../media/json-cancel.svg);
+  @include toolTip {
+    content: "Cancel without saving";
+  }
 }
 
 .edit-check {
   @extend %json-icon;
   background-image: url(../../media/json-check.svg);
+  @include toolTip {
+    content: "Save as string";
+  }
 }
 
 .key-modal-submit {
   @extend %json-icon;
   background-image: url(../../media/json-check.svg);
   margin: 5px 0 -6px 0;
+  @include toolTip {
+    content: "Add item";
+  }
+}
+
+.detected {
+  @include toolTip {
+    content: "Save as suggested data-type";
+  }
 }

@@ -41,7 +41,8 @@ function createWindow() {
     height: 450,
     transparent: true,
     frame: false,
-    alwaysOnTop: true
+    alwaysOnTop: true,
+    backgroundColor: 'transparent'
   });
 
   // and load the index.html of the app.

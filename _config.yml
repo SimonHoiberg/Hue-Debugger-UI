@@ -1,5 +1,5 @@
 theme: jekyll-theme-cayman
 show_downloads: true
 github:
-  win_url: https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.1/HueDebuggerUIInstaller.exe
-  linux_url: https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.0.1/Hue-Debugger-UI-linux-x64.zip
+  win_url: https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.1.0/HueDebuggerUIInstaller.exe
+  linux_url: https://github.com/Silind/Hue-Debugger-UI/releases/download/v1.1.0/Hue-Debugger-UI-linux-x64.zip

@@ -16,3 +16,12 @@
     background-color: $shade2;
   }
 }
+
+.disabled {
+  cursor: not-allowed;
+
+  &:hover {
+    color: $base2;
+    background-color: $base1;
+  }
+}

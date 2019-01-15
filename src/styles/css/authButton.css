@@ -7,9 +7,19 @@
   margin-top: 10px;
   text-align: center;
   cursor: pointer;
-  transition: 0.3s; }
-  .authButton:hover {
-    color: #1b1c1d;
-    background-color: #a8a8a0; }
+  transition: 0.3s;
+}
+.authButton:hover {
+  color: #1b1c1d;
+  background-color: #a8a8a0;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+.disabled:hover {
+  color: #bbc2c2;
+  background-color: #373b3d;
+}
 
 /*# sourceMappingURL=authButton.css.map */

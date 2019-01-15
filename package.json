@@ -4,37 +4,41 @@
   "description": "An interactive graphical interface for observing and interacting with Philips Hue REST API",
   "homepage": "./",
   "author": "Silind Sofware",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
     "electron": "^2.0.10",
     "moment": "^2.22.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-json-editor-ajrm": "^2.5.9",
     "react-json-view": "^1.19.1",
-    "react-scripts": "1.1.4",
-    "react-textarea-autosize": "^7.0.4",
+    "react-scripts": ">=2.0.0",
     "sweetalert": "^2.1.0"
   },
   "main": "src/electron/electron-starter.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "electron": "electron .",
     "electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
-    "package-mac": "electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
     "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Hue Debugger UI\"",
     "package-linux": "electron-packager . --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
-    "create-installer-mac": "electron-installer-dmg ./release-builds/Hue Debugger UI-darwin-x64/Hue Debugger UI.app --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns",
     "create-installer-win": "node installers/windows/createinstaller.js"
   },
   "devDependencies": {
-    "electron-packager": "^12.1.2",
+    "babel-core": "^7.0.0-bridge.0",
     "electron-prebuilt": "*",
     "electron-winstaller": "^2.6.4",
     "react-test-renderer": "^16.5.2",
     "rimraf": "^2.6.2"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

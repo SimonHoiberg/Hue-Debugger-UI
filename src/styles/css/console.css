@@ -6,11 +6,13 @@
   bottom: 0;
   left: 0;
   overflow: hidden;
-  transition: 0.15s;
-  z-index: 300; }
+  transition: 0.1s;
+  z-index: 300;
+}
 
 .consoleWrapperShow {
-  height: 300px; }
+  height: 300px;
+}
 
 .consoleHeader {
   -webkit-touch-callout: none;
@@ -26,19 +28,23 @@
   line-height: 30px;
   color: #bbc2c2;
   font-size: 16px;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .consoleHeaderShow {
   background-color: #778283;
-  color: #1b1c1d; }
+  color: #1b1c1d;
+}
 
 .outputWrapper {
   white-space: pre;
   margin-bottom: 10;
-  transition: 0.3s;
-  color: #778283; }
-  .outputWrapper:hover {
-    color: #bbc2c2; }
+  transition: 0.15s;
+  color: #778283;
+}
+.outputWrapper:hover {
+  color: #bbc2c2;
+}
 
 .menuLine {
   -webkit-touch-callout: none;
@@ -48,7 +54,8 @@
   -ms-user-select: none;
   user-select: none;
   height: 35px;
-  position: absolute; }
+  position: absolute;
+}
 
 .menuButton {
   width: 35px;
@@ -57,7 +64,32 @@
   text-align: center;
   color: #778283;
   font-size: 30px;
-  cursor: pointer; }
+  cursor: pointer;
+  position: relative;
+}
+.menuButton:hover:after {
+  opacity: 1;
+  transition: all 0.3s;
+  transition-delay: 0.5s;
+  visibility: visible;
+}
+.menuButton:after {
+  background-color: #c1dfeb;
+  color: #18191a;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  font-family: "Noto Sans", sans-serif !important;
+  padding: 1px 5px 2px 5px !important;
+  left: 100%;
+  position: absolute;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #222222;
+  opacity: 0;
+  border: 1px solid #111111;
+  z-index: 99999;
+  visibility: hidden;
+  content: attr(data-title);
+}
 
 .consoleContent {
   height: 230px;
@@ -65,9 +97,11 @@
   overflow-y: auto;
   color: #778283;
   font-size: 13;
-  font-family: monospace; }
+  font-family: monospace;
+}
 
 .consoleTable td:nth-of-type(1) {
-  width: 100px; }
+  width: 100px;
+}
 
 /*# sourceMappingURL=console.css.map */

@@ -51,8 +51,12 @@ class Console extends Component {
         >
           Console
         </div>
-        <div className="menuLine" data-title={this.state.showFormatted ? "No formatting" : "Formatting"}>
-          <div className="menuButton" onClick={this.toggleFormatting}>
+        <div className="menuLine">
+          <div 
+            className="menuButton" 
+            onClick={this.toggleFormatting}
+            data-title={this.state.showFormatted ? "No formatting" : "Formatting"}  
+          >
             <i className="material-icons">{formattedIcon}</i>
           </div>
         </div>

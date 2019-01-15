@@ -1,58 +1,40 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
   background-color: #1b1c1d;
   width: 100%;
   height: 100%;
   min-width: 900px;
   min-height: 600px;
   position: absolute;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 #root {
   width: 100%;
   height: 100%;
-  position: absolute; }
+  position: absolute;
+}
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px; }
+  width: 10px;
+}
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #a8a8a0; }
+  background: #a8a8a0;
+}
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #373b3d; }
+  background: #373b3d;
+}
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #e6750d; }
-
-[data-title]:hover:after {
-  opacity: 1;
-  transition: all 0.3s;
-  visibility: visible; }
-
-[data-title]:after {
-  content: attr(data-title);
-  background-color: #c1dfeb;
-  color: #18191a;
-  font-size: 100%;
-  position: absolute;
-  padding: 1px 5px 2px 5px;
-  bottom: -1.6em;
-  left: 100%;
-  white-space: nowrap;
-  box-shadow: 1px 1px 3px #222222;
-  opacity: 0;
-  border: 1px solid #111111;
-  z-index: 99999;
-  visibility: hidden; }
-
-[data-title] {
-  position: relative; }
+  background: #e6750d;
+}
 
 /*# sourceMappingURL=index.css.map */
