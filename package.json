@@ -2,7 +2,7 @@
   "name": "hue-debugger-ui",
   "productName": "Hue Debugger UI",
   "description": "An interactive graphical interface for observing and interacting with Philips Hue REST API",
-  "homepage": "./",
+  "homepage": "https://hue-debugger-ui.com/",
   "author": "Silind Sofware",
   "version": "1.1.0",
   "private": true,
