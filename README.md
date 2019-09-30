@@ -1,16 +1,16 @@
 # Hue Debugger UI [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Fan%20of%20Philips%20Hue?%20Check%20out%20Hue%20Debugger%20UI!&url=https://github.com/Silind/Hue-Debugger-UI&hashtags=philipshue,iot,developertool)
 
-[![Github License](https://img.shields.io/github/license/Silind/Hue-Debugger-UI.svg)](https://github.com/Silind/Hue-Debugger-UI/blob/master/LICENSE)
+[![Github License](https://img.shields.io/github/license/Silind/Hue-Debugger-UI.svg)](https://github.com/Silind-Software/Hue-Debugger-UI/blob/master/LICENSE)
 [![Build Status](https://travis-ci.com/Silind/Hue-Debugger-UI.svg?branch=master)](https://travis-ci.com/Silind/Hue-Debugger-UI)
-[![Requirements Status](https://requires.io/github/Silind/Hue-Debugger-UI/requirements.svg?branch=master)](https://requires.io/github/Silind/Hue-Debugger-UI/requirements/?branch=master)
 [![React Version](https://img.shields.io/badge/react-v16.4.2-blue.svg)](https://github.com/facebook/react)
 [![Electron Version](https://img.shields.io/badge/electron-v2.0.10-blue.svg)](https://github.com/electron/electron)
+
+![example](https://hue-debugger-ui-docs-20190921115130-hostingbucket-huedocs.s3-eu-west-1.amazonaws.com/static/laptop-b445fe58ba79b4026d8915b336ae4e28.png)
 
 #### Graphical interface for observing and interacting directly with Hue API
 
 ## Table of content
 
-- [Preview](#preview)
 - [**Getting Started**](#getting-started)
 - [Built With](#built-with)
 - [Contributing](#contributing)
@@ -18,9 +18,6 @@
 - [Get Help](#get-help)
 - [Motivation](#motivation)
 - [Acknowledgments](#acknowledgements)
-
-## Preview
-![example1](https://silind.com/hue-debugger-ui/example-gif.gif)
 
 ## Getting Started
 You can get up and running with Hue Debugger UI quickly in two ways
