@@ -5,7 +5,7 @@
 [![React Version](https://img.shields.io/badge/react-v16.4.2-blue.svg)](https://github.com/facebook/react)
 [![Electron Version](https://img.shields.io/badge/electron-v2.0.10-blue.svg)](https://github.com/electron/electron)
 
-![example](https://hue-debugger-ui-docs-20190921115130-hostingbucket-huedocs.s3-eu-west-1.amazonaws.com/static/laptop-b445fe58ba79b4026d8915b336ae4e28.png)
+![example](https://silind-s3.s3.eu-west-2.amazonaws.com/icons-and-misc/laptop.png)
 
 #### Graphical interface for observing and interacting directly with Hue API
 
@@ -78,7 +78,7 @@ This project is licensed under the [MIT License](https://github.com/Silind/Hue-D
 **An enhanced substitute for the API Debug Tool**  
 Every Hue bridge comes with a simple web app built into it, the _API Debug Tool_, which you can use to learn how the Hue REST API works 'under the hood' and which can be useful to debug your app during development.
 
-<img src="https://silind.com/hue-debugger-ui/example-png.png" width="500" />
+<img src="https://silind-s3.s3.eu-west-2.amazonaws.com/icons-and-misc/example-png.png" width="500" />
 
 However, the _API Debug Tool_ quickly becomes tedious to use, and especially when doing continuous debugging of larger and more complex projects, debugging with this tool will feel cumbersome.
 
