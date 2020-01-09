@@ -1,0 +1,170 @@
+@import './main';
+
+.validation-failure {
+  display: none;
+}
+
+.swal-overlay {
+  background-color: rgba(0,0,0,0.6);
+  outline: none;
+}
+
+.swal-modal {
+  background-color: $base1;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.6);;
+}
+
+.swal-title, .swal-text {
+  color: $shade7;
+}
+
+.swal-button--confirm {
+  background-color: $shade2;
+  color: $base3;
+}
+
+.swal-button--cancel {
+  background-color: $base3;
+  color: $base2;
+}
+
+.react-json-view {
+  background-color: $jsonBackground !important;
+}
+
+.key-modal-request {
+  background-color: rgba(28,28,28,0.5) !important;
+}
+
+.key-modal-request div {
+  background-color: $modalBackground !important;
+}
+
+.key-modal-request div div {
+  font-family: 'Noto Sans', sans-serif !important;
+  font-size: 14px !important;
+  color: $base4 !important;
+}
+
+.key-modal-input {
+  background-color: $base3 !important;
+  color: $shade2 !important;
+}
+
+.variable-editor {
+  width: 400px;
+  background-color: $base3 !important;
+  color: $shade2 !important;
+}
+
+.key-modal-request span:nth-child(1) {
+  background-color: $base4 !important;
+}
+
+.copy-icon svg {
+  opacity: 0 !important;
+}
+
+.click-to-add-icon svg {
+  opacity: 0 !important;
+}
+
+.click-to-remove-icon svg {
+  opacity: 0 !important;
+}
+
+.click-to-edit-icon svg {
+  opacity: 0 !important;
+}
+
+.edit-cancel svg {
+  opacity: 0 !important;
+}
+
+.edit-check svg {
+  opacity: 0 !important;
+}
+
+.key-modal-submit svg {
+  opacity: 0 !important;
+}
+
+%json-icon {
+  width: 15px;
+  height: 15px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  margin: 0 1px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.copy-icon {
+  @extend %json-icon;
+  background-image: url(../media/json-copy.svg);
+  @include toolTip {
+    content: "Copy to clipboard";
+  }
+}
+
+.click-to-add-icon  {
+  @extend %json-icon;
+  background-image: url(../media/json-add.svg);
+  @include toolTip {
+    content: "Add new item";
+  }
+}
+
+.click-to-remove-icon  {
+  @extend %json-icon;
+  background-image: url(../media/json-delete.svg);
+  @include toolTip {
+    content: "Remove item";
+  }
+}
+
+.click-to-edit-icon {
+  @extend %json-icon;
+  background-image: url(../media/json-edit.svg);
+  @include toolTip {
+    content: "Edit item";
+  }
+}
+
+.edit-cancel {
+  @extend %json-icon;
+  background-image: url(../media/json-cancel.svg);
+  @include toolTip {
+    content: "Cancel without saving";
+  }
+}
+
+.edit-check {
+  @extend %json-icon;
+  background-image: url(../media/json-check.svg);
+  @include toolTip {
+    content: "Save as string";
+  }
+}
+
+.key-modal-submit {
+  @extend %json-icon;
+  background-image: url(../media/json-check.svg);
+  margin: 5px 0 -6px 0;
+  @include toolTip {
+    content: "Add item";
+  }
+}
+
+.detected {
+  @include toolTip {
+    content: "Save as suggested data-type";
+  }
+}

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import AppContainer from "./pages/AppContainer";
-import "./styles/css/appContainer.css";
-import Authenticate from "./pages/Authenticate";
 import swal from "sweetalert";
+import AppContainer from "./pages/AppContainer/AppContainer";
+import Authenticate from "./pages/Authenticate/Authenticate";
 
 class App extends Component {
   state = {
