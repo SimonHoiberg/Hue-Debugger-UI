@@ -15,7 +15,10 @@
     "react-json-editor-ajrm": "^2.5.9",
     "react-json-view": "^1.19.1",
     "react-scripts": "^3.3.0",
-    "sweetalert": "^2.1.0"
+    "sweetalert": "^2.1.0",
+    "tslint-config-airbnb": "^5.11.2",
+    "tslint-config-silind": "^1.0.22",
+    "tslint-react": "^4.1.0"
   },
   "main": "src/electron/electron-starter.js",
   "scripts": {
@@ -30,11 +33,17 @@
     "create-installer-win": "node installers/windows/createinstaller.js"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.25",
+    "@types/node": "^13.1.6",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
     "babel-core": "^7.0.0-bridge.0",
     "electron-prebuilt": "*",
     "electron-winstaller": "^2.6.4",
     "react-test-renderer": "^16.5.2",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4"
   },
   "browserslist": [
     ">0.2%",
