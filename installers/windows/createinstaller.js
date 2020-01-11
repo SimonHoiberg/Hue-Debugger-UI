@@ -1,17 +1,17 @@
-const createWindowsInstaller = require('electron-winstaller').createWindowsInstaller
-const path = require('path')
+const createWindowsInstaller = require('electron-winstaller').createWindowsInstaller;
+const path = require('path');
 
 getInstallerConfig()
   .then(createWindowsInstaller)
   .catch((error) => {
-    console.error(error.message || error)
-    process.exit(1)
-  })
+    console.error(error.message || error);
+    process.exit(1);
+  });
 
-function getInstallerConfig () {
-  console.log('creating windows installer')
-  const rootPath = path.join('./')
-  const outPath = path.join(rootPath, 'release-builds')
+function getInstallerConfig() {
+  console.log('creating windows installer');
+  const rootPath = path.join('./');
+  const outPath = path.join(rootPath, 'release-builds');
 
   return Promise.resolve({
     appDirectory: path.join(outPath, 'Hue Debugger UI-win32-ia32/'),
@@ -21,6 +21,6 @@ function getInstallerConfig () {
     exe: 'Hue Debugger UI.exe',
     setupExe: 'HueDebuggerUIInstaller.exe',
     setupIcon: path.join(rootPath, 'assets', 'icons', 'win', 'icon.ico'),
-    loadingGif: path.join(rootPath, 'assets', 'loading', 'loading.gif')
-  })
+    loadingGif: path.join(rootPath, 'assets', 'loading', 'loading.gif'),
+  });
 }

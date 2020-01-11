@@ -39,13 +39,29 @@ exports[`Components should render correctly should render Authenticate correctly
 
 exports[`Components should render correctly should render Console correctly 1`] = `
 <div
-  className="consoleWrapper consoleWrapperShow"
+  className="consoleWrapper"
+  style={
+    Object {
+      "boxSizing": "border-box",
+      "flexShrink": 0,
+      "height": "300px",
+      "maxHeight": 760,
+      "maxWidth": undefined,
+      "minHeight": 30,
+      "minWidth": undefined,
+      "position": "relative",
+      "userSelect": "auto",
+      "width": "100%",
+    }
+  }
 >
-  <div
-    className="consoleHeader consoleHeaderShow"
-    onClick={[Function]}
-  >
-    Console
+  <div>
+    <div
+      className="consoleHeader consoleHeaderShow"
+      onClick={[Function]}
+    >
+      Console
+    </div>
   </div>
   <div
     className="menuLine"
@@ -65,6 +81,24 @@ exports[`Components should render correctly should render Console correctly 1`] 
   <div
     className="consoleContent"
   />
+  <span>
+    <div
+      className=""
+      onMouseDown={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "cursor": "row-resize",
+          "height": "10px",
+          "left": "0px",
+          "position": "absolute",
+          "top": "-5px",
+          "userSelect": "none",
+          "width": "100%",
+        }
+      }
+    />
+  </span>
 </div>
 `;
 

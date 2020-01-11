@@ -59,7 +59,7 @@
 }
 
 .consoleContent {
-  height: 230px;
+  height: calc(100% - 50px);
   padding: 20px 65px;
   overflow-y: auto;
   color: $base5;
