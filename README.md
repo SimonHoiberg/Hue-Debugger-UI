@@ -2,7 +2,7 @@
 
 [![Github License](https://img.shields.io/github/license/Silind/Hue-Debugger-UI.svg)](https://github.com/Silind-Software/Hue-Debugger-UI/blob/master/LICENSE)
 [![Build Status](https://travis-ci.com/Silind/Hue-Debugger-UI.svg?branch=master)](https://travis-ci.com/Silind/Hue-Debugger-UI)
-[![React Version](https://img.shields.io/badge/react-v16.4.2-blue.svg)](https://github.com/facebook/react)
+[![React Version](https://img.shields.io/badge/react-v16.12.0-blue.svg)](https://github.com/facebook/react)
 [![Electron Version](https://img.shields.io/badge/electron-v2.0.10-blue.svg)](https://github.com/electron/electron)
 
 ![example](https://silind-s3.s3.eu-west-2.amazonaws.com/icons-and-misc/laptop.png)
@@ -20,9 +20,10 @@
 - [Acknowledgments](#acknowledgements)
 
 ## Getting Started
-You can get up and running with Hue Debugger UI quickly in two ways
+You can get up and running with Hue Debugger UI quickly in three ways
 
-- **Install from executable .exe (Windows x64) or download archive (Linux x64 / macOS)**
+- **Download and install for Windows, macOS or Linux**
+- **Start in your browser using Docker**
 - **Clone repository and run with Node**
 
 ### Download executable
@@ -32,6 +33,14 @@ You can get up and running with Hue Debugger UI quickly in two ways
 #### [Download for macOS (x64)](https://github.com/Silind-Software/Hue-Debugger-UI/releases/download/v2.0.0/Hue-Debugger-UI-mac.zip)
 
 #### [Download for Linux (x64)](https://github.com/Silind-Software/Hue-Debugger-UI/releases/download/v2.0.0/Hue.Debugger.UI-linux-x64.zip)
+
+### Run with Docker
+Use the following command:
+```console
+docker run -p 5000:80 silind/hue-debugger-ui:2.0.0
+```
+
+Hue Debugger UI will now be available in your browser on [http://localhost:5000](http://localhost:5000)
 
 ### Run with Node
 Clone this repository, and run Hue Debugger UI from a local server using Node.
