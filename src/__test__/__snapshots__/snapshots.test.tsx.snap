@@ -43,6 +43,7 @@ exports[`Components should render correctly should render Console correctly 1`] 
 >
   <div
     className="consoleHeader consoleHeaderShow"
+    onClick={[Function]}
   >
     Console
   </div>
