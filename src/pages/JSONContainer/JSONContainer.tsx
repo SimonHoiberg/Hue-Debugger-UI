@@ -1,5 +1,6 @@
 import React, { Component, Fragment, FC, useState, useEffect } from 'react';
 import ReactJson from 'react-json-view';
+import { Resizable } from 're-resizable';
 import AuthButton from '../../components/AuthButton/AuthButton';
 import JSONTextEditor from '../../components/JSONTextEditor/JSONTextEditor';
 import './jsonContainer.scss';
@@ -129,13 +130,19 @@ const JSONContainer: FC<IJSONContainerProps> = (props) => {
     };
 
     return (
-      <div className='menuWrapper'>
+      <Resizable
+        className='menuWrapper'
+        defaultSize={{ width: '25%', height: '100%' }}
+        minWidth={'15%'}
+        maxWidth={'75%'}
+        enable={{ right: true }}
+      >
         <div className='createNewItemButton' onClick={handleNewItemClick}>
           <i className='material-icons createNewItemIcon'>add_circle</i>
           Create new item
         </div>
         {menuItems()}
-      </div>
+      </Resizable>
     );
   };
 
@@ -168,7 +175,8 @@ const JSONContainer: FC<IJSONContainerProps> = (props) => {
               viewBox='0 0 40 40'
               fill='currentColor'
               preserveAspectRatio='xMidYMid meet'
-              style={style}>
+              style={style}
+            >
               <g>
                 <path d='m31.6 21.6h-10v10h-3.2v-10h-10v-3.2h10v-10h3.2v10h10v3.2z' />
               </g>
@@ -216,13 +224,11 @@ const JSONContainer: FC<IJSONContainerProps> = (props) => {
     );
   };
 
-  const style = !props.subMenuItems.length ? { width: '100%' } : { width: '75%' };
-
   return (
     <Fragment>
       <div className='contentContainer'>
         {renderMenu()}
-        <div style={style}>{renderJsonContent()}</div>
+        <div className='jsonContainer'>{renderJsonContent()}</div>
       </div>
     </Fragment>
   );

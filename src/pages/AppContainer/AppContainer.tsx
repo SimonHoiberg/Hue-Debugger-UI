@@ -173,7 +173,6 @@ const AppContainer: FC<IProps> = (props) => {
           showSweetAlertDialog={props.showSweetAlertDialog}
         />
       </div>
-
       <Console show={showConsole} toggleConsole={consoleClick} consoleOutput={consoleOutput} />
     </Fragment>
   );

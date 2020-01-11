@@ -15,6 +15,10 @@
   align-items: center;
 }
 
+.jsonContainer {
+  width: 100%;
+}
+
 .emptyText {
   color: $base1;
   font-size: 28px;
@@ -25,7 +29,8 @@
 .menuWrapper {
   @include no-select;
   width: 25%;
-  margin-right: 30px;
+  margin-right: 15px;
+  padding-right: 15px;
 }
 
 .menuContainer {

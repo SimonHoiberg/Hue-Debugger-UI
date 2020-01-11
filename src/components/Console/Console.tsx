@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import moment from 'moment';
+import { Resizable } from 're-resizable';
 import 'moment/locale/pt-br';
 import './console.scss';
 
@@ -11,7 +12,7 @@ interface IConsoleProps {
 
 const Console: FC<IConsoleProps> = (props) => {
   const [showFormatted, setShowFormatted] = useState<boolean>(true);
-
+  const [currentHeight, setCurrentHeight] = useState<number>(300);
   const consoleContainerRep = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,20 +27,33 @@ const Console: FC<IConsoleProps> = (props) => {
     setShowFormatted((prevShowFormatted: boolean) => !prevShowFormatted);
   };
 
-  const consoleOutput = () =>
-    props.consoleOutput.map((o, index) => (
+  const consoleOutput = () => {
+    return props.consoleOutput.map((o, index) => (
       <ConsoleOutput key={index} output={o} formatted={showFormatted} />
     ));
+  };
 
   const formattedIcon = showFormatted ? 'notes' : 'sort';
-  const wrapperClasses = props.show ? 'consoleWrapper consoleWrapperShow' : 'consoleWrapper';
   const headerClasses = props.show ? 'consoleHeader consoleHeaderShow' : 'consoleHeader';
   const dataTitle = showFormatted ? 'No formatting' : 'Formatting';
 
+  const handleChangeHeight = (e: any, dir: any, ref: any, d: { width: number; height: number }) => {
+    setCurrentHeight((prevHeight) => prevHeight + d.height);
+  };
+
   return (
-    <div className={wrapperClasses}>
-      <div className={headerClasses} onClick={props.toggleConsole}>
-        Console
+    <Resizable
+      className='consoleWrapper'
+      size={{ width: '100%', height: props.show ? currentHeight : 30 }}
+      onResizeStop={handleChangeHeight}
+      enable={{ top: props.show }}
+      maxHeight={760}
+      minHeight={30}
+    >
+      <div>
+        <div className={headerClasses} onClick={props.toggleConsole}>
+          Console
+        </div>
       </div>
       <div className='menuLine'>
         <div className='menuButton' onClick={toggleFormatting} data-title={dataTitle}>
@@ -49,7 +63,7 @@ const Console: FC<IConsoleProps> = (props) => {
       <div ref={consoleContainerRep} className='consoleContent'>
         {consoleOutput()}
       </div>
-    </div>
+    </Resizable>
   );
 };
 
