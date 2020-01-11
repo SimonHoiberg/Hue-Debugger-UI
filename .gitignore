@@ -9,9 +9,6 @@
 # production
 /build
 /release-builds
-/assets
-/splash
-/installers
 
 # misc
 .DS_Store
