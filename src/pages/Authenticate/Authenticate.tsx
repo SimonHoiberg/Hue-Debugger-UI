@@ -1,4 +1,4 @@
-import React, { FC, useState, FormEvent } from 'react';
+import React, { FC, useState, FormEvent, useEffect } from 'react';
 import * as service from '../../services/xs-json-requester';
 import AuthButton from '../../components/AuthButton/AuthButton';
 import './authenticate.scss';
@@ -13,6 +13,10 @@ const Authenticate: FC<IProps> = (props) => {
   const [inputDevName, setInputDevName] = useState<string>('');
   const [authenticateWaiter, setAuthenticateWaiter] = useState<boolean>(false);
   const [authenticateTimeout, setAuthenticateTimeout] = useState<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    startAuthenticateProbing();
+  }, [authenticateWaiter]);
 
   const onInputIpChange = (changer: React.Dispatch<React.SetStateAction<string>>) => {
     return (e: FormEvent<HTMLInputElement>) => {
@@ -59,11 +63,9 @@ const Authenticate: FC<IProps> = (props) => {
 
   const authorizeNewUser = async () => {
     try {
-      const request = await service.postJSON(`http://${inputIp}/api`, {
+      const result = await service.postJSON(`http://${inputIp}/api`, {
         devicetype: `hue_debugger_ui#${inputDevName}`,
       });
-
-      const result = await request.json();
 
       Object.keys(result[0]).forEach((key) => {
         if (key === 'success') {
@@ -134,7 +136,6 @@ const Authenticate: FC<IProps> = (props) => {
   const beginCountdown = async () => {
     setAuthenticateWaiter(true);
     setAuthenticateTimeout(setTimeout(endCountdown, 15500));
-    startAuthenticateProbing();
   };
 
   const endCountdown = async () => {
