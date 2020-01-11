@@ -66,80 +66,65 @@ const AppContainer: FC<IProps> = (props) => {
     }
   };
 
-  const fetchMenuItems = (query: string): Promise<any[]> =>
-    new Promise((resolve, reject) => {
-      service
-        .getJSON(`${apiUrl}/${query}`)
-        .then((res) => {
-          if (res[0]) {
-            reject(res[0].error.description);
-          } else if (query === 'config') {
-            resolve([]);
-          }
+  const fetchMenuItems = async (query: string): Promise<any[]> => {
+    const result = await service.getJSON(`${apiUrl}/${query}`);
 
-          const fetchedMenuItems = Object.keys(res).map((item) => ({
-            id: item,
-            name: query
-              ? `${item} : ${res[item].name}`
-              : item.replace(/^\w/, (c) => c.toUpperCase()),
-          }));
-          resolve(fetchedMenuItems);
-        })
-        .catch((err) => {
-          reject('connection could not be obtained');
-          console.log(err);
-        });
-    });
+    if (result[0]) {
+      throw result[0].error.description;
+    }
 
-  const fetchHueData = (query: string): Promise<any> =>
-    new Promise((resolve, reject) => {
-      service
-        .getJSON(`${apiUrl}/${query}`)
-        .then((res) => {
-          if (res[0]) {
-            reject(res[0].error.description);
-          }
+    if (query === 'config') {
+      return [];
+    }
 
-          resolve(res);
-        })
-        .catch((err) => {
-          reject('connection could not be obtained');
-          console.log(err);
-        });
-    });
-
-  const putHueData = (query: string, data: any) => {
-    const url = `${apiUrl}/${menuItems[activeMenu].id}/${query}`;
-
-    service
-      .putJSON(url, data)
-      .then((res) => {
-        requestHueData({ force: true });
-        writeToConsole(res);
-      })
-      .catch((err) => writeToConsole(err));
+    return Object.keys(result).map((item) => ({
+      id: item,
+      name: query ? `${item} : ${result[item].name}` : item.replace(/^\w/, (c) => c.toUpperCase()),
+    }));
   };
 
-  const deleteHueData = (query: string) => {
-    const url = `${apiUrl}/${menuItems[activeMenu].id}/${query}`;
+  const fetchHueData = async (query: string): Promise<any> => {
+    const result = await service.getJSON(`${apiUrl}/${query}`);
 
-    service
-      .deleteJSON(url, null)
-      .then((res) => {
-        writeToConsole(res);
-        requestHueData({ force: true });
-      })
-      .catch((err) => writeToConsole(err));
+    if (result[0]) {
+      throw result[0].error.description;
+    }
+
+    return result;
   };
 
-  const createNewHueData = (newHueData: any) => {
-    service
-      .postJSON(`${apiUrl}/${menuItems[activeMenu].id}}/`, newHueData)
-      .then((res) => {
-        writeToConsole(res);
-        requestHueData({ force: true });
-      })
-      .catch((err) => writeToConsole(err));
+  const putHueData = async (query: string, data: any) => {
+    const url = `${apiUrl}/${menuItems[activeMenu].id}/${query}`;
+
+    try {
+      const result = await service.putJSON(url, data);
+      requestHueData({ force: true });
+      writeToConsole(result);
+    } catch (error) {
+      writeToConsole(error);
+    }
+  };
+
+  const deleteHueData = async (query: string) => {
+    const url = `${apiUrl}/${menuItems[activeMenu].id}/${query}`;
+
+    try {
+      const result = await service.deleteJSON(url, null);
+      writeToConsole(result);
+      requestHueData({ force: true });
+    } catch (error) {
+      writeToConsole(error);
+    }
+  };
+
+  const createNewHueData = async (newHueData: any) => {
+    try {
+      const result = await service.postJSON(`${apiUrl}/${menuItems[activeMenu].id}}/`, newHueData);
+      writeToConsole(result);
+      requestHueData({ force: true });
+    } catch (error) {
+      writeToConsole(error);
+    }
   };
 
   const writeToConsole = (write: any[]) => setConsoleOutput((prevOutput) => [...prevOutput, write]);

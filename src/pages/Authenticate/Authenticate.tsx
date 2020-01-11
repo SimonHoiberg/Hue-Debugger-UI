@@ -57,22 +57,25 @@ const Authenticate: FC<IProps> = (props) => {
     }, 1500);
   };
 
-  const authorizeNewUser = () => {
-    service
-      .postJSON(`http://${inputIp}/api`, {
+  const authorizeNewUser = async () => {
+    try {
+      const request = await service.postJSON(`http://${inputIp}/api`, {
         devicetype: `hue_debugger_ui#${inputDevName}`,
-      })
-      .then((res) =>
-        Object.keys(res[0]).forEach((key) => {
-          if (key === 'success') {
-            if (authenticateTimeout) {
-              clearTimeout(authenticateTimeout);
-            }
-            props.setAuthentication(inputIp, res[0].success.username);
+      });
+
+      const result = await request.json();
+
+      Object.keys(result[0]).forEach((key) => {
+        if (key === 'success') {
+          if (authenticateTimeout) {
+            clearTimeout(authenticateTimeout);
           }
-        }),
-      )
-      .catch((e) => console.log(e.message));
+          props.setAuthentication(inputIp, result[0].success.username);
+        }
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const renderInputFields = () => (
