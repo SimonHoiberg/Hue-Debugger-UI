@@ -8,7 +8,7 @@
   "private": true,
   "dependencies": {
     "@types/react-test-renderer": "^16.9.1",
-    "electron": "^2.0.10",
+    "electron": "^9.1.0",
     "moment": "^2.22.2",
     "node-sass": "^4.13.0",
     "re-resizable": "^6.1.1",
